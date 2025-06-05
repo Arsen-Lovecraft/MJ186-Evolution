@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://36o0p33tb04a"]
+
+[ext_resource type="Script" uid="uid://bps65iiavgos6" path="res://scenes/settings/setting_windows/game_settings_ui.gd" id="1_b0bv2"]
+[ext_resource type="PackedScene" uid="uid://ixyqor8lxi3x" path="res://scenes/settings/primitives/options_settings_ui.tscn" id="2_im2kc"]
+
+[node name="Game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_b0bv2")
+
+[node name="OptionsSettingsUi" parent="." instance=ExtResource("2_im2kc")]
+unique_name_in_owner = true
+layout_mode = 1
+options_name = "LANGUAGE"
