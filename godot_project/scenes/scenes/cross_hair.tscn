@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dirlk3yvhfyqr"]
+
+[ext_resource type="Texture2D" uid="uid://mqnam1duw4wp" path="res://assets/player/crosshair.png" id="1_ou0km"]
+
+[node name="CrossHair" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_ou0km")
+offset = Vector2(400, 0)

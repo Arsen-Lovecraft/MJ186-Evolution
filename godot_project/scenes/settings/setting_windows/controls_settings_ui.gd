@@ -12,6 +12,7 @@ func  _ready() -> void:
 		if(action.substr(0,2) != "ui"):
 			var action_button: ActionButtonUI = _action_button_ps.instantiate()
 			_actions_list.add_child(action_button)
+			print(settings)
 			action_button.set_action_button(action, settings.action_map[action])
 	_connect_signals()
 
