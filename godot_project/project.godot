@@ -10,12 +10,12 @@ config_version=5
 
 [application]
 
-config/name="GodotTemplate"
+config/name="Mini_Jam_186:_Evolution"
 config/version="0.0.1"
 run/main_scene="uid://ldg2jq7gg87x"
 config/use_custom_user_dir=true
 config/features=PackedStringArray("4.4", "GL Compatibility")
-config/icon="uid://c5rmp24b5u7va"
+config/icon="uid://liwxv083jv8i"
 
 [audio]
 
@@ -91,3 +91,8 @@ limbo_console_search_history={
 [internationalization]
 
 locale/translations=PackedStringArray("res://assets/localizations/translation_template.en.translation", "res://assets/localizations/translation_template.ru.translation")
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

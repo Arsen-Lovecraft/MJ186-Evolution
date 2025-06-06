@@ -48,34 +48,6 @@ signal settings_changed()
 			music_sound_level = value
 
 ## Graphic
-
-@export_storage var RESOLUTIONS: Dictionary[String,Vector2] = {
-	"1280×720" = Vector2(1280,720),
-	"1366×768" = Vector2(1366,768),
-	"1600×900" = Vector2(1600,900),
-	"1920×1080" = Vector2(1920,1080),
-	"2560×1080" = Vector2(2560,1080),
-	"2560×1440" = Vector2(2560,1440),
-	"3200×1800" = Vector2(3200,1800),
-	"3440×1440" = Vector2(3440,1440),
-	"3840×2160" = Vector2(3840,2160),
-	"5120×1440" = Vector2(5120,1440)
-	}:
-		get():
-			return RESOLUTIONS
-		set(value):
-			return
-
-@export_storage var resolution: Vector2 = Vector2(1920,1080):
-	get():
-		return resolution
-	set(value):
-		for i: String in RESOLUTIONS:
-			if(RESOLUTIONS[i] == value):
-				resolution = value
-
-@export_storage var is_full_screen: bool = false
-
 @export_storage var FRAME_RATES: Dictionary[String,int] = {
 	"NO_LIMIT" = 0,
 	"30" = 30,
@@ -98,8 +70,6 @@ signal settings_changed()
 			if(FRAME_RATES[i] == value):
 				frame_rate = value
 
-@export_storage var is_vsync_on: bool = false
-
 ##Controls
 
 @export_storage var default_action_map: Dictionary[String,InputEvent] ={}
@@ -116,16 +86,7 @@ func init() -> void:
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), _volume_to_db(music_sound_level))
 	## Graphic
 	Engine.max_fps = frame_rate
-	DisplayServer.window_set_size(resolution)
 	DisplayServer.window_set_position(Vector2(0,0))
-	if(is_vsync_on):
-		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
-	else:
-		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
-	if(is_full_screen):
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-	else:
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 	## Translations
 	TranslationServer.set_locale(language)
 	## Controls
@@ -149,29 +110,6 @@ func set_music_to(value: int) -> void:
 func set_frame_rate(rate: int) -> void:
 	frame_rate = rate
 	Engine.max_fps = rate
-	settings_changed.emit()
-
-func set_resolution(res: Vector2) -> void:
-	resolution = res
-	DisplayServer.window_set_size(resolution)
-	DisplayServer.window_set_position(Vector2(0,0))
-	settings_changed.emit()
-
-func set_vsync(state: bool) -> void:
-	if(state == true):
-		is_vsync_on = true
-		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
-	else:
-		is_vsync_on = false
-		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
-	settings_changed.emit()
-
-func set_fullscreen(state: bool) -> void:
-	is_full_screen = state
-	if(is_full_screen):
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-	else:
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 	settings_changed.emit()
 
 func set_language(lang: String) -> void:

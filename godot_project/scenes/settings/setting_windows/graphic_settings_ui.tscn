@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://c05ux4ga1jtti"]
+[gd_scene load_steps=3 format=3 uid="uid://c05ux4ga1jtti"]
 
 [ext_resource type="Script" uid="uid://cfwqxv117oojl" path="res://scenes/settings/setting_windows/graphic_settings_ui.gd" id="1_axqny"]
-[ext_resource type="PackedScene" uid="uid://dngne50y67an7" path="res://scenes/settings/primitives/toggle_settings_ui.tscn" id="2_07d4j"]
 [ext_resource type="PackedScene" uid="uid://ixyqor8lxi3x" path="res://scenes/settings/primitives/options_settings_ui.tscn" id="3_5uqnv"]
 
 [node name="GraphicSettings" type="Control"]
@@ -29,22 +28,7 @@ text = "WINDOW"
 [node name="WindowVBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="FullscreenToggle" parent="VBoxContainer/WindowVBoxContainer" instance=ExtResource("2_07d4j")]
-unique_name_in_owner = true
-layout_mode = 2
-toggle_name = "FULLSCREEN"
-
-[node name="ResolutionsOptionsSettingsUi" parent="VBoxContainer/WindowVBoxContainer" instance=ExtResource("3_5uqnv")]
-unique_name_in_owner = true
-layout_mode = 2
-options_name = "WINDOW_RES"
-
 [node name="FramesOptionsSettingsUi" parent="VBoxContainer/WindowVBoxContainer" instance=ExtResource("3_5uqnv")]
 unique_name_in_owner = true
 layout_mode = 2
 options_name = "FRAME_RATE"
-
-[node name="VsyncToggle" parent="VBoxContainer/WindowVBoxContainer" instance=ExtResource("2_07d4j")]
-unique_name_in_owner = true
-layout_mode = 2
-toggle_name = "VSYNC"
