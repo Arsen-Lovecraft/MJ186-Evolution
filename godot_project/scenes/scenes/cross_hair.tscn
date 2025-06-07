@@ -1,10 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://dirlk3yvhfyqr"]
+[gd_scene load_steps=3 format=3 uid="uid://dirlk3yvhfyqr"]
 
 [ext_resource type="Texture2D" uid="uid://mqnam1duw4wp" path="res://assets/player/crosshair.png" id="1_ou0km"]
+[ext_resource type="Script" uid="uid://8fk8uhufeplj" path="res://scenes/scenes/cross_hair.gd" id="1_vxfmo"]
 
 [node name="CrossHair" type="Node2D"]
+script = ExtResource("1_vxfmo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_ou0km")
-offset = Vector2(400, 0)
+offset = Vector2(200, 0)
+
+[node name="crosshairMarker" type="Marker2D" parent="."]
+position = Vector2(100, 0)
