@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsxn285vm5p2a"
-path="res://.godot/imported/2. Run 48 x 48.png-abda06decf8657cdea0a29b030cc53ed.ctex"
+uid="uid://d85lhw0jy77k"
+path="res://.godot/imported/BUCK BORRIS.png-3369a149662551ee0347cded66c9f20c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/2. Run 48 x 48.png"
-dest_files=["res://.godot/imported/2. Run 48 x 48.png-abda06decf8657cdea0a29b030cc53ed.ctex"]
+source_file="res://assets/player/BUCK BORRIS.png"
+dest_files=["res://.godot/imported/BUCK BORRIS.png-3369a149662551ee0347cded66c9f20c.ctex"]
 
 [params]
 

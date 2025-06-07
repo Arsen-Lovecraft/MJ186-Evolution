@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ci8a4n81cey6o"
-path="res://.godot/imported/6. Dash 112 x 56.png-1e23f96b65711bd2b13a06d99ba7a243.ctex"
+uid="uid://bsgal5retgmva"
+path="res://.godot/imported/teleport.png-4da4b99295aaf9892fc4d2514219ed01.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/6. Dash 112 x 56.png"
-dest_files=["res://.godot/imported/6. Dash 112 x 56.png-1e23f96b65711bd2b13a06d99ba7a243.ctex"]
+source_file="res://assets/player/teleport.png"
+dest_files=["res://.godot/imported/teleport.png-4da4b99295aaf9892fc4d2514219ed01.ctex"]
 
 [params]
 

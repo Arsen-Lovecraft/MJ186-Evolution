@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5y2m0w6p6na6"
-path="res://.godot/imported/1. shadow Idle 48 x 48 left.png-9159dff7cfe5495a650486a61b2b083d.ctex"
+uid="uid://d1c5lm1jbc711"
+path="res://.godot/imported/roll.png-c255757bccc2b08f8b11b36e814bb3ef.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/1. shadow Idle 48 x 48 left.png"
-dest_files=["res://.godot/imported/1. shadow Idle 48 x 48 left.png-9159dff7cfe5495a650486a61b2b083d.ctex"]
+source_file="res://assets/player/roll.png"
+dest_files=["res://.godot/imported/roll.png-c255757bccc2b08f8b11b36e814bb3ef.ctex"]
 
 [params]
 

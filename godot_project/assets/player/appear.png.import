@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://sb47xfapr1r"
-path="res://.godot/imported/2.shadow Run 48 x 48.png-1384963fd734030ddee0453e3463c027.ctex"
+uid="uid://cbhkorovp4gm1"
+path="res://.godot/imported/appear.png-3f1542530bd0ffebcce1f231b1a505fd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/2.shadow Run 48 x 48.png"
-dest_files=["res://.godot/imported/2.shadow Run 48 x 48.png-1384963fd734030ddee0453e3463c027.ctex"]
+source_file="res://assets/player/appear.png"
+dest_files=["res://.godot/imported/appear.png-3f1542530bd0ffebcce1f231b1a505fd.ctex"]
 
 [params]
 

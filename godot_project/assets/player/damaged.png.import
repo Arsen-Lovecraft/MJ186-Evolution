@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bf7eawpf48cl6"
-path="res://.godot/imported/1. shadow Idle 48 x 48.png-0d6a89ae9528b2e0e22d65845c586e47.ctex"
+uid="uid://3h6jxkf6wps1"
+path="res://.godot/imported/damaged.png-15b25c23941855d9a1004338948875eb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/1. shadow Idle 48 x 48.png"
-dest_files=["res://.godot/imported/1. shadow Idle 48 x 48.png-0d6a89ae9528b2e0e22d65845c586e47.ctex"]
+source_file="res://assets/player/damaged.png"
+dest_files=["res://.godot/imported/damaged.png-15b25c23941855d9a1004338948875eb.ctex"]
 
 [params]
 

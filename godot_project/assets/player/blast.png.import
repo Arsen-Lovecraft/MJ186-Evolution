@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cke76co47wjn2"
-path="res://.godot/imported/7. Hit 48 x 48.png-cd8d13b43d9cddc73adf6b0ddaf93c14.ctex"
+uid="uid://blq5vpbupdpur"
+path="res://.godot/imported/blast.png-c5038aa05efb8212a49352ad819e30f0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/7. Hit 48 x 48.png"
-dest_files=["res://.godot/imported/7. Hit 48 x 48.png-cd8d13b43d9cddc73adf6b0ddaf93c14.ctex"]
+source_file="res://assets/player/blast.png"
+dest_files=["res://.godot/imported/blast.png-c5038aa05efb8212a49352ad819e30f0.ctex"]
 
 [params]
 
