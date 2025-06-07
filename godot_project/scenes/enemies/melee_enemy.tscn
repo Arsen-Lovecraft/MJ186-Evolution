@@ -1,0 +1,220 @@
+[gd_scene load_steps=13 format=3 uid="uid://darlr5ccm4gj3"]
+
+[ext_resource type="Script" uid="uid://bj3vc55uffqhy" path="res://scenes/enemies/melee_enemy.gd" id="1_l188l"]
+[ext_resource type="Texture2D" uid="uid://cat5troaosdg0" path="res://assets/enemies/melee_enemy.png" id="2_ru65g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p6yma"]
+size = Vector2(16, 16.25)
+
+[sub_resource type="Animation" id="Animation_l188l"]
+resource_name = "move_right"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("animations:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("animations:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ghbxi"]
+resource_name = "death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("animations:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 9, 10, 11, 12]
+}
+
+[sub_resource type="Animation" id="Animation_ru65g"]
+resource_name = "attack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("animations:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.733333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 7, 8]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.42),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_try_to_damage"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_c1gin"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("animations:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("animations:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_p6yma"]
+resource_name = "move_left"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("animations:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("animations:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c1gin"]
+_data = {
+&"RESET": SubResource("Animation_c1gin"),
+&"attack": SubResource("Animation_ru65g"),
+&"death": SubResource("Animation_ghbxi"),
+&"move_left": SubResource("Animation_p6yma"),
+&"move_right": SubResource("Animation_l188l")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l188l"]
+size = Vector2(93, 57)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p6yma"]
+radius = 4.0
+height = 11.5
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l188l"]
+radius = 4.97965
+height = 10.8923
+
+[node name="MeleeEnemy" type="CharacterBody2D"]
+scale = Vector2(4, 4)
+collision_layer = 2
+collision_mask = 2048
+floor_constant_speed = true
+script = ExtResource("1_l188l")
+
+[node name="animations" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -16.25)
+texture = ExtResource("2_ru65g")
+hframes = 13
+
+[node name="MeleeEnemy" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8.125)
+shape = SubResource("RectangleShape2D_p6yma")
+
+[node name="MEAnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_c1gin")
+}
+autoplay = "move_right"
+
+[node name="Sensor" type="Area2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-0.0799999, -9.336)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sensor"]
+position = Vector2(0.5, -24.5)
+shape = SubResource("RectangleShape2D_l188l")
+
+[node name="DamageZones" type="Area2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-0.0799999, -9.336)
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageZones"]
+position = Vector2(0.0799999, -13.914)
+shape = SubResource("CapsuleShape2D_p6yma")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DamageZones"]
+position = Vector2(14.08, -0.163999)
+rotation = 1.5826
+shape = SubResource("CapsuleShape2D_l188l")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="DamageZones"]
+position = Vector2(-14.17, 0.0860023)
+rotation = -1.57354
+shape = SubResource("CapsuleShape2D_l188l")
+
+[node name="RayCast2DRight" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(8.25, -0.5)
+target_position = Vector2(7.25, 1.75)
+collision_mask = 2048
+hit_from_inside = true
+
+[node name="RayCast2D2Left" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-8, -0.75)
+target_position = Vector2(-5.5, 2)
+collision_mask = 2048
+hit_from_inside = true

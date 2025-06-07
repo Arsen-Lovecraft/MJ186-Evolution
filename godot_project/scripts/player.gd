@@ -22,6 +22,7 @@ func _ready() -> void:
 	punch_radius.connect("body_entered", _on_body_entered)
 	for enemies in get_tree().get_nodes_in_group("enemies"):
 		pass
+	add_to_group("Player")
 	
 func _on_body_entered(_body: Variant) -> void:
 	print(_body)
