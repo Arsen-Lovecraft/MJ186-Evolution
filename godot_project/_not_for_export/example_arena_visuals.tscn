@@ -1,0 +1,92 @@
+[gd_scene load_steps=7 format=4 uid="uid://dvon0xwgso82e"]
+
+[ext_resource type="TileSet" uid="uid://dn6svqxiwg6vh" path="res://assets/terrain/environment.tres" id="1_iyrpm"]
+[ext_resource type="Texture2D" uid="uid://jlf43boixnnl" path="res://assets/terrain/hostile_door_animations.png" id="1_vr1xd"]
+
+[sub_resource type="Animation" id="Animation_vr1xd"]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Door:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_iyrpm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Door:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_8tn01"]
+resource_name = "close"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Door:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.666667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4d16f"]
+_data = {
+&"RESET": SubResource("Animation_iyrpm"),
+&"close": SubResource("Animation_8tn01"),
+&"open": SubResource("Animation_vr1xd")
+}
+
+[node name="ExampleArena" type="Node2D"]
+
+[node name="Walls" type="TileMapLayer" parent="."]
+texture_filter = 1
+position = Vector2(680, 386)
+scale = Vector2(6, 6)
+tile_map_data = PackedByteArray("AAD+/wAAAgAEAAAAAAD//wAAAgAEAAEAAAAAAAAAAgAEAAEAAAABAAAAAgAEAAEAAAD9/wAAAgAEAAAAAAACAAAAAgAEAAEAAAD9////AgADAAAAAAD+////AgADAAAAAAD/////AgADAAAAAAAAAP//AgADAAAAAAABAP//AgADAAAAAAACAP//AgADAAAAAAAFAAIAAgAEAAEAAAAFAAEAAgAEAAAAAAAEAAEAAgAEAAAAAAAEAAAAAgADAAMAAAAEAAIAAgAEAAAAAAAFAAAAAgADAAAAAAAEAP//AgADAAEAAAAFAP//AgAEAAEAAAAFAP7/AgAEAAEAAAAFAP3/AgAEAAEAAAAEAP3/AgAEAAAAAAAEAPz/AgAAAAQAAAD5//7/AgAEAAAAAAD5/wAAAgAEAAEAAAD5/wEAAgAEAAAAAAD5/wIAAgAEAAEAAAD6//z/AgAAAAQAAAD6//3/AgAEAAEAAAD6/wAAAgAEAAEAAAD6/wEAAgAEAAEAAAD7//z/AgAEAAEAAAD7////AgADAAAAAAD7/wAAAgAEAAEAAAD8//3/AgAEAAEAAAD8//7/AgAEAAEAAAD8/wAAAgAEAAAAAAD8/wEAAgAEAAEAAAD9//3/AgAEAAEAAAD9/wEAAgAEAAEAAAD9/wIAAgAEAAEAAAD+//3/AgAEAAEAAAD+//7/AgAEAAAAAAD+/wEAAgAEAAAAAAD+/wIAAgAEAAEAAAD///z/AgAEAAEAAAD///3/AgAEAAEAAAD///7/AgAEAAEAAAD//wEAAgAEAAEAAAAAAAIAAgAEAAEAAAABAP7/AgADAAMAAAACAPz/AgAEAAAAAAACAP3/AgAEAAAAAAACAP7/AgADAAAAAAADAP3/AgAEAAEAAAADAP7/AgADAAAAAAADAAAAAgADAAEAAAADAAEAAgADAAEAAAADAAIAAgADAAEAAAAEAP7/AgAEAAIAAAAFAPz/AgAAAAQAAAAAAAEAAgAEAAAAAAABAAIAAgAEAAEAAAACAAEAAgAEAAAAAAACAAIAAgAEAAEAAAADAP//AgAEAAIAAAAAAP3/AgAEAAEAAAAAAP7/AgAEAAEAAAABAPz/AgADAAEAAAABAP3/AgADAAEAAAAAAPz/AgAEAAEAAAD7/wEAAgAEAAAAAAD6/wIAAgAEAAAAAAD8/wIAAgAEAAAAAAD8////AgADAAAAAAD7//7/AgAEAAEAAAD6//7/AgAEAAEAAAD6////AgADAAAAAAD5////AgADAAAAAAD7//3/AgAEAAAAAAD9//z/AgAEAAAAAAD8//z/AgAEAAEAAAADAPz/AgAEAAAAAAD+//z/AgAEAAAAAAD5//z/AgAAAAQAAAD5//3/AgAEAAAAAAD9//7/AgAEAAEAAAD7/wIAAgAEAAEAAAD//wIAAgAEAAEAAAABAAEAAgAEAAAAAAA=")
+tile_set = ExtResource("1_iyrpm")
+
+[node name="Platforms" type="TileMapLayer" parent="."]
+texture_filter = 1
+position = Vector2(680, 386)
+scale = Vector2(6, 6)
+tile_map_data = PackedByteArray("AAD+/wAAAgABAAAAAAD//wAAAgABAAAAAAAAAAAAAgABAAAAAAABAAAAAgABAAAAAAD9/wAAAgAAAAAAAAACAAAAAgACAAAAAAD6/wEAAgABAAAAAAD7/wEAAgACAAAAAAD5/wEAAgAAAAAAAAD5//3/AgABAAAAAAAFAP3/AgABAAAAAAD6//3/AgACAAAAAAAEAP3/AgAAAAAAAAD6////AgABAAAAAAD5////AgAAAAAAAAD7////AgACAAAAAAD///3/AgABAAAAAAAAAP3/AgACAAAAAAD+//3/AgAAAAAAAAA=")
+tile_set = ExtResource("1_iyrpm")
+
+[node name="Borders" type="TileMapLayer" parent="."]
+texture_filter = 1
+position = Vector2(680, 386)
+scale = Vector2(6, 6)
+tile_map_data = PackedByteArray("AAAFAPz/AgACAAIAAAAFAP3/AgABAAMAAAAFAP7/AgABAAMAAAAFAP//AgABAAMAAAAFAAAAAgABAAMAAAAFAAEAAgABAAMAAAAFAAIAAgACAAEAAAAEAAIAAgAAAAEAAAACAAIAAgAAAAEAAAADAAIAAgAAAAEAAAABAAIAAgAAAAEAAAAAAAIAAgAAAAEAAAD//wIAAgAAAAEAAAD+/wIAAgAAAAEAAAD9/wIAAgAAAAEAAAD8/wIAAgAAAAEAAAD7/wIAAgAAAAEAAAD6/wIAAgAAAAEAAAD5/wIAAgABAAEAAAD5/wEAAgACAAQAAAD5/wAAAgACAAQAAAD5////AgACAAQAAAD5//7/AgACAAQAAAD5//3/AgACAAQAAAD5//z/AgABAAIAAAD6//z/AgAAAAMAAAD7//z/AgAAAAIAAAD8//z/AgAAAAMAAAD9//z/AgAAAAMAAAD+//z/AgAAAAMAAAD///z/AgAAAAIAAAAAAPz/AgAAAAIAAAABAPz/AgAAAAIAAAACAPz/AgAAAAIAAAADAPz/AgAAAAMAAAAEAPz/AgAAAAMAAAA=")
+tile_set = ExtResource("1_iyrpm")
+
+[node name="Door" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(681, 386)
+scale = Vector2(6, 6)
+texture = ExtResource("1_vr1xd")
+hframes = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Door"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_4d16f")
+}
