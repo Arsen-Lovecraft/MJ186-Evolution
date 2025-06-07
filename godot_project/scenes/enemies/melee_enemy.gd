@@ -9,6 +9,7 @@ extends CharacterBody2D
 @onready var _attack_cooldown: Timer = %AttackCooldown
 @onready var _attack_sfx: AudioStreamPlayer = %AttackSFX
 @onready var _death_sfx: AudioStreamPlayer = %DeathSFX
+@onready var _crack: GPUParticles2D = %crack
 @onready var _is_player_detected: bool = false
 @onready var _is_player_in_damage_area: bool = false
 @onready var _is_move_to_right: bool = true
@@ -42,6 +43,7 @@ func load_data(melee_enemy_resource: RMeleeEnemy) -> void:
 	_rmelee_enemy_data = melee_enemy_resource
 
 func _init_data() -> void:
+	_rmelee_enemy_data.resource_local_to_scene = true
 	_attack_cooldown.wait_time = _rmelee_enemy_data.attack_cooldown
 
 func _connect_signals() -> void:
@@ -77,15 +79,22 @@ func _move_to_player(global_pos: Vector2) -> void:
 
 func _attack() -> void:
 	velocity.x = 0
-	if(_attack_cooldown.time_left == 0):
+	if(_attack_cooldown.time_left == 0 and _me_animation_player.current_animation != "attack"):
 		_me_animation_player.play("attack")
 		_attack_cooldown.start()
 		_attack_sfx.play()
+		await _try_to_damage()
 
 func _try_to_damage() -> void:
-	for body: Node2D in _damage_zones.get_overlapping_bodies():
-		if(body is Player):
-			(body as Player).take_damage(_rmelee_enemy_data.damage)
+	while (true):
+		for body: Node2D in _damage_zones.get_overlapping_bodies():
+			if(body is Player and _me_animation_player.current_animation_position >= 0.4):
+				(body as Player).take_damage(_rmelee_enemy_data.damage)
+				print(_me_animation_player.current_animation_position)
+				return
+		if(_me_animation_player.current_animation_position > 0.75):
+			return
+		await get_tree().process_frame
 
 func _on_player_detected(body: Node2D) -> void:
 	if(body is Player):
@@ -105,7 +114,11 @@ func _on_player_out_damage_area(body: Node2D) -> void:
 		_is_player_in_damage_area = false
 
 func _on_dead() -> void:
-	(self as MeleeEnemy).process_mode = Node.PROCESS_MODE_DISABLED
+	_damage_zones.process_mode = Node.PROCESS_MODE_DISABLED
+	_sensor.process_mode = Node.PROCESS_MODE_DISABLED
+	self.set_physics_process(false)
+	self.collision_layer = 0
+	self.collision_mask = 0
 	_death_sfx.play()
 	_me_animation_player.play("death")
 
@@ -114,3 +127,7 @@ func _on_animation_finished(animation_name: String) -> void:
 		queue_free()
 	elif(animation_name == "attack"):
 		_me_animation_player.play("RESET")
+
+func take_damage(damage: float) -> void:
+	_crack.emitting = true
+	_rmelee_enemy_data.hp -= damage

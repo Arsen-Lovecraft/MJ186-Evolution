@@ -25,7 +25,9 @@ func _ready() -> void:
 	add_to_group("Player")
 	
 func _on_body_entered(_body: Variant) -> void:
-	print(_body)
+	if(_body is MeleeEnemy):
+		(_body as MeleeEnemy).take_damage(45)
+		print((_body as MeleeEnemy)._rmelee_enemy_data.hp)
 	
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
