@@ -102,3 +102,9 @@ func _punchCooldown() -> void:
 func play_animation(anim_name: String) -> void:
 	if player_sprite.animation != anim_name:
 		player_sprite.play(anim_name)
+
+
+#Test var and func
+var _test_player_damage: float = 25
+func take_damage(damage: float) -> void:
+	print("Damaged on: " + str(damage))
