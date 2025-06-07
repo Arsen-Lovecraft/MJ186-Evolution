@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cyim514wg1s0d"]
+
+[ext_resource type="Texture2D" path="res://assets/player/punch.png" id="2_2kcj1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fgkn0"]
+size = Vector2(6, 4)
+
+[node name="playerBullet" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_2kcj1")
+
+[node name="BulletKill" type="Timer" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_fgkn0")

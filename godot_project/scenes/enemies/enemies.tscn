@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bn6m0dr7ypemt"]
+
+[ext_resource type="Texture2D" uid="uid://d85lhw0jy77k" path="res://assets/player/BUCK BORRIS.png" id="1_pgpww"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o47o2"]
+size = Vector2(25, 20)
+
+[node name="enemies" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 2
+collision_mask = 2051
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-7.62939e-06, -1)
+scale = Vector2(0.128889, 0.207143)
+texture = ExtResource("1_pgpww")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_o47o2")
