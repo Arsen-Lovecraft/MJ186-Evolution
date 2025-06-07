@@ -202,6 +202,7 @@ script = ExtResource("1_dovo2")
 
 [node name="playerSprite" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_myrg7")
 animation = &"punch2"
 

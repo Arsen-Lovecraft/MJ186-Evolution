@@ -115,6 +115,8 @@ locale/translations=PackedStringArray("res://assets/localizations/translation_te
 
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Enemies"
+2d_physics/layer_3="PlayerDamageCollision"
+2d_physics/layer_4="EnemyDamageCollision"
 2d_physics/layer_12="Environment"
 
 [rendering]

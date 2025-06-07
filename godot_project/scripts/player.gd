@@ -21,9 +21,12 @@ func _ready() -> void:
 	punch_radius.connect("body_entered", _on_body_entered)
 	for enemies in get_tree().get_nodes_in_group("enemies"):
 		pass
+	add_to_group("Player")
 	
 func _on_body_entered(_body: Variant) -> void:
-	print(_body)
+	if(_body is MeleeEnemy):
+		(_body as MeleeEnemy).take_damage(45)
+		print((_body as MeleeEnemy)._rmelee_enemy_data.hp)
 	
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -103,5 +106,13 @@ func play_animation(anim_name: String) -> void:
 	if player_sprite.animation != anim_name:
 		player_sprite.play(anim_name)
 
+
+
+#Test var and func
+var _test_player_damage: float = 25
+func take_damage(damage: float) -> void:
+	print("Damaged on: " + str(damage))
+
 func damage(value : float) -> void:
 	print(value)
+

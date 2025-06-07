@@ -171,7 +171,6 @@ func _init_input_map() -> void:
 			if(!action_map.has(action) and action.substr(0,2) != "ui"):
 				action_map.set(action,InputMap.action_get_events(action)[0])
 				default_action_map.set(action,InputMap.action_get_events(action)[0])
-	__print_mappings()
 
 func __print_mappings() -> void:
 	print("Defaults")
