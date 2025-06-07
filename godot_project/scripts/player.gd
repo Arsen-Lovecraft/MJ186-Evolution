@@ -15,7 +15,6 @@ var face :float = 1.0
 var shootFreq : bool = true
 var anim_locked: bool = false
 
-signal hit
 
 func _ready() -> void:
 	$punchTimer.connect("timeout",_punchCooldown)
@@ -97,6 +96,8 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	move_and_slide()
 	
+	
+	
 #shootTimer Connected on ready
 func _punchCooldown() -> void:
 	shootFreq = true
@@ -106,7 +107,12 @@ func play_animation(anim_name: String) -> void:
 		player_sprite.play(anim_name)
 
 
+
 #Test var and func
 var _test_player_damage: float = 25
 func take_damage(damage: float) -> void:
 	print("Damaged on: " + str(damage))
+
+func damage(value : float) -> void:
+	print(value)
+
