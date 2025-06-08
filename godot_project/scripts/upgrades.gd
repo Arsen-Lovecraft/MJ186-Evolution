@@ -4,8 +4,6 @@ class_name Upgrades
 @export var _upgrade_list : UpgradeList = preload("uid://b07tteevgv41w")
 @export var _player : RplayerData = preload("uid://byrd0re6gadg6")
 
-signal kill_all_enemies
-
 @onready var upgrade_1: Button = %Upgrade1
 @onready var upgrade_2: Button = %Upgrade2
 var _upgrades : Dictionary
@@ -69,15 +67,6 @@ func rename_keys(dict: Dictionary) -> Dictionary:
 			"speed_increase":
 				var value : Variant = dict[key]
 				new_dict["Speed"] = value
-			"mp_rate_increase":
-				var value : Variant = dict[key]
-				new_dict["MP Gain"] = value
-			"regen_increase":
-				var value : Variant = dict[key]
-				new_dict["HP Regen"] = value
-			"kill_all_enemies":
-				var value : Variant = dict[key]
-				new_dict["Kill all enemies"] = value
 	return new_dict
 
 func _upgrade_chosen1(pair: Dictionary) -> void:
@@ -90,12 +79,6 @@ func _upgrade_chosen1(pair: Dictionary) -> void:
 				_player.damage += pair[key]
 			"speed_increase":
 				_player.SPEED += pair[key]
-			"mp_rate_increase":
-				_player.playerMprate += pair[key]
-			"regen_increase":
-				_player.regen_rate += pair[key]
-			"kill_all_enemies":
-				EventBus.killAllEnemies = true
 	get_tree().paused = false
 	queue_free()
 	
@@ -109,11 +92,5 @@ func _upgrade_chosen2(pair: Dictionary) -> void:
 				_player.damage += pair[key]
 			"speed_increase":
 				_player.SPEED += pair[key]
-			"mp_rate_increase":
-				_player.playerMprate += pair[key]
-			"regen_increase":
-				_player.regen_rate += pair[key]
-			"kill_all_enemies":
-				EventBus.killAllEnemies = true
 	get_tree().paused = false
 	queue_free()

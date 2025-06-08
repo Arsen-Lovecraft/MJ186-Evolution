@@ -1,59 +1,95 @@
-[gd_scene load_steps=7 format=3 uid="uid://c4v623mu1hl6r"]
+[gd_scene load_steps=11 format=3 uid="uid://c4v623mu1hl6r"]
 
-[ext_resource type="Texture2D" uid="uid://du1wyx148kqo8" path="res://assets/UI/bg.png" id="1_bb11m"]
 [ext_resource type="Script" uid="uid://biwpwj7a3cgvk" path="res://scenes/utility/player_ui.gd" id="1_rbce2"]
 [ext_resource type="Theme" uid="uid://p6vvjajrchtu" path="res://scenes/utility/player_ui.tres" id="2_7csbp"]
-[ext_resource type="Texture2D" uid="uid://ngmuk7nw5ncl" path="res://assets/UI/over.png" id="2_k8dae"]
 [ext_resource type="Resource" uid="uid://byrd0re6gadg6" path="res://custom_resources/player/player_data.tres" id="2_shr2j"]
-[ext_resource type="Texture2D" uid="uid://b4huklhgv6d7v" path="res://assets/UI/progress.png" id="3_rbce2"]
+[ext_resource type="Theme" uid="uid://mcy6eod2nsxu" path="res://assets/jam_theme.tres" id="3_picui"]
+[ext_resource type="Texture2D" uid="uid://bgk2tbdsxhgty" path="res://assets/UI/player/background_hp.png" id="4_6p5ts"]
+[ext_resource type="Texture2D" uid="uid://pggqhrdwclct" path="res://assets/UI/player/over_hp.png" id="5_picui"]
+[ext_resource type="Texture2D" uid="uid://b7sc25ht0wpl" path="res://assets/UI/player/progress_hp.png" id="6_5j4nm"]
+[ext_resource type="Texture2D" uid="uid://cy1idnga42x0o" path="res://assets/UI/player/background_mutation_bar.png" id="7_hwct6"]
+[ext_resource type="Texture2D" uid="uid://cww3fhhd2vsdk" path="res://assets/UI/player/over_mutation_bar.png" id="8_v5p80"]
+[ext_resource type="Texture2D" uid="uid://cl4it68dpsj5f" path="res://assets/UI/player/progress_mutation_bar.png" id="9_1y7r1"]
 
 [node name="PlayerUI" type="CanvasLayer"]
 script = ExtResource("1_rbce2")
 _player_data = ExtResource("2_shr2j")
 
 [node name="Control" type="Control" parent="."]
+texture_filter = 1
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_vertical = 0
+theme = ExtResource("3_picui")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.125185
+offset_bottom = -0.120003
+grow_horizontal = 2
 theme_override_constants/separation = 455
+metadata/_edit_use_anchors_ = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/HBoxContainer"]
 layout_mode = 2
-
-[node name="HP" type="Label" parent="Control/HBoxContainer/HBoxContainer"]
-layout_mode = 2
-theme = ExtResource("2_7csbp")
-text = "HP"
+size_flags_horizontal = 3
 
 [node name="playerHP" type="TextureProgressBar" parent="Control/HBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 value = 50.0
-texture_under = ExtResource("1_bb11m")
-texture_over = ExtResource("2_k8dae")
-texture_progress = ExtResource("3_rbce2")
-tint_progress = Color(3.08037e-06, 0.81572, 0.564701, 1)
+nine_patch_stretch = true
+texture_under = ExtResource("4_6p5ts")
+texture_over = ExtResource("5_picui")
+texture_progress = ExtResource("6_5j4nm")
+
+[node name="Control" type="Control" parent="Control/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="HPCount" type="Label" parent="Control/HBoxContainer/HBoxContainer/Control"]
+unique_name_in_owner = true
+self_modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+offset_left = -206.0
+offset_top = 85.0
+offset_right = -180.0
+offset_bottom = 116.0
+theme = ExtResource("2_7csbp")
+text = "30/120"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Control/HBoxContainer"]
 layout_mode = 2
-
-[node name="MP" type="Label" parent="Control/HBoxContainer/HBoxContainer2"]
-layout_mode = 2
-theme = ExtResource("2_7csbp")
-text = "MP"
+size_flags_horizontal = 3
 
 [node name="playerMP" type="TextureProgressBar" parent="Control/HBoxContainer/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 value = 50.0
-texture_under = ExtResource("1_bb11m")
-texture_over = ExtResource("2_k8dae")
-texture_progress = ExtResource("3_rbce2")
+nine_patch_stretch = true
+texture_under = ExtResource("7_hwct6")
+texture_over = ExtResource("8_v5p80")
+texture_progress = ExtResource("9_1y7r1")
 tint_progress = Color(0.800753, 0.520694, 0.97988, 1)
+
+[node name="Control" type="Control" parent="Control/HBoxContainer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="MPCount" type="Label" parent="Control/HBoxContainer/HBoxContainer2/Control"]
+unique_name_in_owner = true
+self_modulate = Color(0.792333, 1, 0.11, 1)
+layout_mode = 2
+offset_left = -202.0
+offset_top = 82.0
+offset_right = -156.0
+offset_bottom = 125.0
+theme = ExtResource("2_7csbp")
+theme_override_font_sizes/font_size = 41
+text = "30/120"

@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://mcy6eod2nsxu"]
+
+[ext_resource type="FontFile" uid="uid://vs03f0y1v7kr" path="res://assets/Pixel Game.otf" id="1_bffci"]
+
+[resource]
+default_font = ExtResource("1_bffci")
