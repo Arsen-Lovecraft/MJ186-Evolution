@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=3 uid="uid://1thg6tkdo4xg"]
+
+[ext_resource type="Script" uid="uid://eb2pxxg10b5u" path="res://scenes/enemies/spawner.gd" id="1_lie5b"]
+[ext_resource type="Texture2D" uid="uid://jlf43boixnnl" path="res://assets/terrain/hostile_door_animations.png" id="2_mv1hi"]
+
+[sub_resource type="Animation" id="Animation_ar6l2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("door:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_mv1hi"]
+resource_name = "close"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("door:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_lie5b"]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("door:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ar6l2"]
+_data = {
+&"RESET": SubResource("Animation_ar6l2"),
+&"close": SubResource("Animation_mv1hi"),
+&"open": SubResource("Animation_lie5b")
+}
+
+[node name="Spawner" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_lie5b")
+
+[node name="door" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("2_mv1hi")
+offset = Vector2(0, -8)
+hframes = 8
+
+[node name="SpawnerAnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_ar6l2")
+}

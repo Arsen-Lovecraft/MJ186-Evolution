@@ -69,10 +69,10 @@ func _auto_move() -> void:
 func _move_to_player(global_pos: Vector2) -> void:
 	var direction: Vector2 = (global_pos - self.global_position).normalized()
 	if(direction.x > 0 and _ray_cast_2d_right.is_colliding() == true):
-		velocity.x = 100
+		velocity.x = _rmelee_enemy_data.speed
 		_is_move_to_right = true
 	elif(direction.x < 0 and _ray_cast_2d_2_left.is_colliding() == true):
-		velocity.x = -100
+		velocity.x = -_rmelee_enemy_data.speed
 		_is_move_to_right = false
 	else:
 		velocity.x = 0
