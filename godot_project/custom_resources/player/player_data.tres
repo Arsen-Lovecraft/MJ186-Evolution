@@ -5,9 +5,12 @@
 [resource]
 script = ExtResource("1_2j1i3")
 playerLevel = 1
-playerMprate = 100.0
+playerMprate = 50.0
+SPEED = 300.0
+JUMP_VELOCITY = -400.0
+regen_rate = 1.0
 hp = 100.0
 mp = 50.0
-damage = 25.0
-attack_cooldown = 3.0
-metadata/_custom_type_script = "uid://c773732inrfhn"
+damage = 10.0
+attack_cooldown = 1.0
+metadata/_custom_type_script = "uid://ccukyj44t4tjo"
