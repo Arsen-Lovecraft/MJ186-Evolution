@@ -6,6 +6,9 @@ signal levelUp
 
 @export var playerLevel : int = 1
 @export var playerMprate : float = 50.0
+@export var SPEED : float = 300.0
+@export var JUMP_VELOCITY : float = -400.0
+@export var regen_rate : float = 1.0
 
 @export var hp: float = 100:
 	set(value):
