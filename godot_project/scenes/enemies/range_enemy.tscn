@@ -1,0 +1,229 @@
+[gd_scene load_steps=14 format=3 uid="uid://dbs7qyg8efv27"]
+
+[ext_resource type="Script" uid="uid://c51k06w07jkog" path="res://scenes/enemies/range_enemy.gd" id="1_342vm"]
+[ext_resource type="Texture2D" uid="uid://c7eyyqnam1gam" path="res://assets/enemies/range_enemy.png" id="2_yu3an"]
+[ext_resource type="Material" uid="uid://cblk8r3ktrgc5" path="res://assets/enemies/enemy_particle_gpu+material.tres" id="3_gf2xn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hd8ja"]
+size = Vector2(43, 63)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_342vm"]
+size = Vector2(475, 308.5)
+
+[sub_resource type="Animation" id="Animation_sqrdn"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("animations:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("animations:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_yu3an"]
+resource_name = "attack"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.4333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_emit_projectile"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("animations:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.4333, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7, 8]
+}
+
+[sub_resource type="Animation" id="Animation_yc637"]
+resource_name = "death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("animations:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [9, 10, 11, 12, 13]
+}
+
+[sub_resource type="Animation" id="Animation_yd63t"]
+resource_name = "move_left"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("animations:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("animations:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_gf2xn"]
+resource_name = "move_right"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("animations:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("animations:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gf2xn"]
+_data = {
+&"RESET": SubResource("Animation_sqrdn"),
+&"attack": SubResource("Animation_yu3an"),
+&"death": SubResource("Animation_yc637"),
+&"move_left": SubResource("Animation_yd63t"),
+&"move_right": SubResource("Animation_gf2xn")
+}
+
+[sub_resource type="Gradient" id="Gradient_ru65g"]
+offsets = PackedFloat32Array(0.0135135, 0.711712, 0.774775, 0.923423)
+colors = PackedColorArray(0.975521, 0.174898, 0.218605, 0.966028, 0.858824, 0.364706, 0.266667, 1, 1, 1, 1, 0.415686, 0.839216, 0.266667, 0.152941, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ghbxi"]
+gradient = SubResource("Gradient_ru65g")
+fill = 2
+fill_from = Vector2(0.48433, 0.475783)
+fill_to = Vector2(0.678063, 0.310541)
+
+[node name="RangeEnemy" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2049
+script = ExtResource("1_342vm")
+
+[node name="RECollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -34.5)
+shape = SubResource("RectangleShape2D_hd8ja")
+
+[node name="animations" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1, -68)
+scale = Vector2(4, 4)
+texture = ExtResource("2_yu3an")
+hframes = 14
+frame = 1
+
+[node name="SensorArea2D" type="Area2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-1, -24)
+collision_layer = 0
+
+[node name="SACollisionShape2D" type="CollisionShape2D" parent="SensorArea2D"]
+position = Vector2(-3, -134.75)
+shape = SubResource("RectangleShape2D_342vm")
+
+[node name="REAnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_gf2xn")
+}
+autoplay = "move_right"
+
+[node name="RayCast2DRight" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(30, -5)
+target_position = Vector2(24, 12)
+collision_mask = 2048
+hit_from_inside = true
+
+[node name="RayCast2D2Left" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-28, -5)
+target_position = Vector2(-28, 13)
+collision_mask = 2048
+hit_from_inside = true
+
+[node name="AttackCooldown" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="AttackSFX" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+bus = &"SFX"
+
+[node name="DeathSFX" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+bus = &"SFX"
+
+[node name="crack" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-1, -34)
+emitting = false
+texture = SubResource("GradientTexture2D_ghbxi")
+one_shot = true
+explosiveness = 1.0
+process_material = ExtResource("3_gf2xn")
+
+[node name="ProjectileEmitPosition" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-1, -85)
