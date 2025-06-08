@@ -23,6 +23,7 @@ var anim_locked: bool = false
 var SPEED : float
 var JUMP_VELOCITY : float
 var regen_rate : float 
+var mp_regen_rate : float 
 var now_regen : bool = true
 var damage_taken : bool = false
 
@@ -54,6 +55,7 @@ func _init_data() -> void:
 	SPEED = _player_data.SPEED
 	JUMP_VELOCITY = _player_data.JUMP_VELOCITY
 	regen_rate = _player_data.regen_rate
+	mp_regen_rate = _player_data.mp_regen_rate / _player_data.hp
 
 func _on_body_entered(_body: Variant) -> void:
 	if(_body is MeleeEnemy):
@@ -137,7 +139,7 @@ func _physics_process(delta: float) -> void:
 	if not direction:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	move_and_slide()
-	
+
 ## _physics_process END
 	
 #_punchCooldown Connected on connectsignals
@@ -152,12 +154,13 @@ func damage_player(damage: float) -> void:
 	_player_data.hp -= damage/_player_data.playerLevel
 	damage_taken = true
 	if _player_data.hp > 0:
-		_player_data.mp += _player_data.playerMprate/(_player_data.playerLevel * _player_data.hp)
+		_player_data.mp += (_player_data.playerMprate * mp_regen_rate)/(_player_data.playerLevel * _player_data.hp)
 		anim_locked = true
 		play_animation("damage")
 		await player_sprite.animation_finished
 		anim_locked = false
 		damage_not_taken.start()
+		mp_regen_rate = (_player_data.mp_regen_rate * _player_data.playerMprate)/(_player_data.playerLevel * _player_data.hp)
 
 func _on_dead()->void:
 	anim_locked = true
@@ -165,7 +168,7 @@ func _on_dead()->void:
 	await player_sprite.animation_finished
 	anim_locked = false
 	queue_free()
-	gameOver.emit()
+	#gameOver.emit()
 
 func _on_levelUp() -> void:
 	var upgradeui := UPGRADES.instantiate()
@@ -177,6 +180,7 @@ func _on_levelUp() -> void:
 func _regen() -> void:
 	if not damage_taken:
 		_player_data.hp += regen_rate
+		_player_data.mp += mp_regen_rate
 
 func _regenStart() -> void:
 	damage_taken = false
