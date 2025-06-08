@@ -17,7 +17,7 @@ signal levelUp
 		hp = value
 		if(hp <= 0):
 			dead.emit()
-@export var mp: float = 50:
+@export var mp: float = 0:
 	get:
 		return mp
 	set(value):

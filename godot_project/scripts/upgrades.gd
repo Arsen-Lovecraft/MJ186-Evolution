@@ -18,8 +18,6 @@ func _ready() -> void:
 	_update_upgrade_button_text(pair)
 	call_deferred("_connect_button_signals", pair)
 	
-	
-	
 func _update_upgrade_button_text(pair: Array) -> void:
 		
 	var pair1 :Variant= rename_keys(pair[0])
@@ -29,19 +27,11 @@ func _update_upgrade_button_text(pair: Array) -> void:
 	upgrade_1.text = "Kill all enemies" if str(pair1.keys()[0]) == "Kill all enemies" else "Increase " + str(pair1.keys()[0]) + " by " + str(pair1.values()[0])
 	upgrade_2.text = "Kill all enemies" if str(pair2.keys()[0]) == "Kill all enemies" else "Increase " + str(pair2.keys()[0]) + " by " + str(pair2.values()[0])
 	
-
-	#upgrade_1.set_meta()
-			
-	
-	
 func _connect_button_signals(pair: Array) -> void:
 
 	upgrade_1.connect("pressed", Callable(self, "_upgrade_chosen1").bind(pair[0]))
 	upgrade_2.connect("pressed", Callable(self, "_upgrade_chosen2").bind(pair[1]))
 	
-
-
-
 func get_exported_variables(res: Resource) -> Dictionary:
 	var data := {}
 	for prop in res.get_property_list():
