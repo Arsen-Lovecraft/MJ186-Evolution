@@ -11,5 +11,5 @@ func _connect_signals() -> void:
 
 func _on_body_shape__entered(body_rid: RID, body: Node, body_shape_index: int, local_shape_index: int) -> void:
 	if(body is Player):
-		(get_tree().get_first_node_in_group("Player") as Player).take_damage(damage)
+		(get_tree().get_first_node_in_group("Player") as Player).damage_player(damage)
 	queue_free()

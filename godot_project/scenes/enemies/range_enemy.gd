@@ -81,6 +81,7 @@ func _emit_projectile() -> void:
 
 func _calculate_velocity(emitter_pos: Vector2, target_pos: Vector2, gravity: float = 980.0, arc_height: float = 250.0) -> Vector2:
 	# Calculate displacement
+	arc_height = randf_range(50, 250)
 	var displacement: Vector2 = target_pos - emitter_pos
 	var horizontal_distance: float = abs(displacement.x)
 	# Calculate vertical velocity needed to reach arc height
