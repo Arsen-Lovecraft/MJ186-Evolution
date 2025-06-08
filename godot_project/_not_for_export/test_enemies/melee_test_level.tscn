@@ -1,9 +1,8 @@
-[gd_scene load_steps=10 format=4 uid="uid://cxdwh4xw2cjaf"]
+[gd_scene load_steps=9 format=4 uid="uid://cxdwh4xw2cjaf"]
 
 [ext_resource type="TileSet" uid="uid://dn6svqxiwg6vh" path="res://assets/terrain/environment.tres" id="1_hcaq8"]
 [ext_resource type="Texture2D" uid="uid://jlf43boixnnl" path="res://assets/terrain/hostile_door_animations.png" id="2_yfpvk"]
 [ext_resource type="PackedScene" uid="uid://darlr5ccm4gj3" path="res://scenes/enemies/melee_enemy.tscn" id="3_1vqf5"]
-[ext_resource type="Resource" uid="uid://udmqedg7r0nf" path="res://custom_resources/enemies/enemy_melee_first_level.tres" id="4_1vqf5"]
 [ext_resource type="PackedScene" uid="uid://bsmgb5t1ra8dn" path="res://scenes/player/player.tscn" id="4_yfpvk"]
 
 [sub_resource type="Animation" id="Animation_iyrpm"]
@@ -96,7 +95,6 @@ libraries = {
 
 [node name="MeleeEnemy" parent="." instance=ExtResource("3_1vqf5")]
 position = Vector2(681, 430)
-_rmelee_enemy_data = ExtResource("4_1vqf5")
 
 [node name="Player" parent="." instance=ExtResource("4_yfpvk")]
 position = Vector2(201, 275)

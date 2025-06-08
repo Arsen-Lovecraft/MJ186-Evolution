@@ -1,0 +1,24 @@
+class_name RplayerData
+extends Resource
+
+signal dead()
+signal levelUp
+
+@export var playerLevel : int = 1
+@export var playerMprate : float = 50.0
+
+@export var hp: float = 100:
+	set(value):
+		hp = value
+		if(hp <= 0):
+			dead.emit()
+@export var mp: float = 50:
+	get:
+		return mp
+	set(value):
+		mp = value
+		if(mp >= 100):
+			levelUp.emit()
+			
+@export var damage: float = 100
+@export var attack_cooldown: float = 1.0

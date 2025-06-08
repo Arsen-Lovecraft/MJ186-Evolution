@@ -4,24 +4,6 @@ extends Node
 var settings: RSettings
 var settings_file_path: String = "user://settings.tres"
 
-var playerHP : int = 100 :
-	get():
-		return playerHP
-	set(value):
-		playerHP = value
-
-var playerMP : int = 0 :
-	get():
-		return playerMP
-	set(value):
-		playerMP = value
-		
-var MPLevel : int = 1:
-	get():
-		return MPLevel
-	set(value):
-		MPLevel = value
-	
 func _ready() -> void:
 	_load_settings()
 	settings.init()
