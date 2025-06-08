@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="RRangeEnemy" load_steps=6 format=3 uid="uid://d2rur8re0oq04"]
+
+[ext_resource type="Curve" uid="uid://c2r3bm8epliqi" path="res://custom_resources/enemies/curves/range/attack_cooldown_to_level_curve.tres" id="1_khfwd"]
+[ext_resource type="Script" uid="uid://cwt2ixotxfw6p" path="res://custom_resources/enemies/rrange_enemy.gd" id="1_km28q"]
+[ext_resource type="Curve" uid="uid://dwfek7dfce8jt" path="res://custom_resources/enemies/curves/range/damage_to_level_curve.tres" id="2_s8whx"]
+[ext_resource type="Curve" uid="uid://c0wfxum6ycdg2" path="res://custom_resources/enemies/curves/range/hp_to_level_curve.tres" id="3_mvkmr"]
+[ext_resource type="Curve" uid="uid://v3x14efuvrnq" path="res://custom_resources/enemies/curves/range/speed_to_level_curve.tres" id="5_hypuh"]
+
+[resource]
+script = ExtResource("1_km28q")
+hp_to_level = ExtResource("3_mvkmr")
+speed_to_level = ExtResource("5_hypuh")
+damage_to_level = ExtResource("2_s8whx")
+attack_cooldown_to_level = ExtResource("1_khfwd")
+metadata/_custom_type_script = "uid://cwt2ixotxfw6p"

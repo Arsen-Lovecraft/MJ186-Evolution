@@ -4,7 +4,7 @@ extends Control
 @onready var settings: RSettings = Global.settings
 
 @onready var _actions_list: VBoxContainer = %ActionsList
-@onready var _action_button_ps: PackedScene = preload("res://scenes/settings/primitives/action_button_ui.tscn")
+@onready var _action_button_ps: PackedScene = preload("uid://4x5efccvwadl")
 @onready var _reset_button: Button = %ResetButton
 
 func  _ready() -> void:
