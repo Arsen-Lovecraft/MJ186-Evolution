@@ -96,6 +96,12 @@ libraries = {
 [node name="MeleeEnemy" parent="." instance=ExtResource("3_1vqf5")]
 position = Vector2(681, 430)
 
+[node name="MeleeEnemy2" parent="." instance=ExtResource("3_1vqf5")]
+position = Vector2(941, 651)
+
+[node name="MeleeEnemy3" parent="." instance=ExtResource("3_1vqf5")]
+position = Vector2(625, 146)
+
 [node name="Player" parent="." instance=ExtResource("4_yfpvk")]
 position = Vector2(201, 275)
 scale = Vector2(5.43844, 5.49407)

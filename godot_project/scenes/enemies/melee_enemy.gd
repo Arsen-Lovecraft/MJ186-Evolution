@@ -38,6 +38,10 @@ func _physics_process(delta: float) -> void:
 		_attack()
 	_handle_animations()
 	move_and_slide()
+	
+	#Kill all enemies
+	if EventBus.killAllEnemies:
+		_rmelee_enemy_data.hp = -1
 
 func load_data(melee_enemy_resource: RMeleeEnemy) -> void:
 	_rmelee_enemy_data = melee_enemy_resource

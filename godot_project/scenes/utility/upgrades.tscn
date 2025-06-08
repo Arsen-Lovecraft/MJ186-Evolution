@@ -1,0 +1,74 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvivda3vnsbw5"]
+
+[ext_resource type="Script" uid="uid://csmrfifeiromh" path="res://scripts/upgrades.gd" id="1_n5uup"]
+
+[node name="Upgrades" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_n5uup")
+
+[node name="canvas" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="ColorRect" parent="canvas"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.231373, 0.231373, 0.231373, 0.427451)
+metadata/_edit_lock_ = true
+
+[node name="buttons" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="GridContainer" type="HBoxContainer" parent="buttons"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.216
+anchor_top = 0.194
+anchor_right = 0.785
+anchor_bottom = 0.773
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 100
+
+[node name="UpgradeCont1" type="ColorRect" parent="buttons/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0, 0.666667, 0.85098, 0.309804)
+
+[node name="Upgrade1" type="Button" parent="buttons/GridContainer/UpgradeCont1"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UpgradeCont2" type="ColorRect" parent="buttons/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(1, 0.411765, 0.988235, 0.376471)
+
+[node name="Upgrade2" type="Button" parent="buttons/GridContainer/UpgradeCont2"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

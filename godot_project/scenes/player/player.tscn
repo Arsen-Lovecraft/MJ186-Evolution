@@ -1,7 +1,6 @@
-[gd_scene load_steps=44 format=3 uid="uid://bsmgb5t1ra8dn"]
+[gd_scene load_steps=43 format=3 uid="uid://bsmgb5t1ra8dn"]
 
 [ext_resource type="Script" uid="uid://b2fss36ik6mev" path="res://scripts/player.gd" id="1_dovo2"]
-[ext_resource type="Resource" uid="uid://byrd0re6gadg6" path="res://custom_resources/player/player_data.tres" id="2_5gtgg"]
 [ext_resource type="Texture2D" uid="uid://bvkib2agxsyom" path="res://assets/player/idle.png" id="2_lvxji"]
 [ext_resource type="Texture2D" uid="uid://3h6jxkf6wps1" path="res://assets/player/damaged.png" id="2_qek5x"]
 [ext_resource type="Texture2D" uid="uid://bsgal5retgmva" path="res://assets/player/teleport.png" id="3_5gtgg"]
@@ -181,9 +180,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4hvnv")
 }],
-"loop": true,
+"loop": false,
 "name": &"death",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -288,13 +287,12 @@ height = 24.0
 disable_mode = 1
 collision_mask = 2051
 script = ExtResource("1_dovo2")
-_player_data = ExtResource("2_5gtgg")
 
 [node name="playerSprite" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_myrg7")
-animation = &"damage"
+animation = &"death"
 
 [node name="playerCollision" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
@@ -303,7 +301,7 @@ shape = SubResource("RectangleShape2D_p47bc")
 
 [node name="punchTimer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 0.5
+wait_time = 2.0
 
 [node name="punchRadius" type="Area2D" parent="."]
 unique_name_in_owner = true
@@ -314,3 +312,10 @@ position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_75vfm")
 
 [node name="PlayerUI" parent="." instance=ExtResource("6_75vfm")]
+
+[node name="regenTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[node name="damageNotTaken" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 5.0

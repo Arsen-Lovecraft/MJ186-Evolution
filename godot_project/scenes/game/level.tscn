@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bsmgb5t1ra8dn" path="res://scenes/player/player.tscn" id="3_rhpan"]
 
 [node name="Level" type="Node"]
+process_mode = 3
 script = ExtResource("1_gttig")
 
 [node name="WaveManager" type="Node" parent="."]
@@ -34,6 +35,7 @@ tile_set = ExtResource("2_dtmi3")
 
 [node name="Spawners" type="Node2D" parent="."]
 unique_name_in_owner = true
+process_mode = 1
 
 [node name="Spawner" parent="Spawners" instance=ExtResource("3_ji7po")]
 position = Vector2(15, 152)
@@ -69,4 +71,6 @@ position = Vector2(-231, 184)
 position = Vector2(-225, 232)
 
 [node name="Player" parent="." instance=ExtResource("3_rhpan")]
+unique_name_in_owner = true
+process_mode = 1
 position = Vector2(-40, 242)

@@ -9,6 +9,7 @@ signal levelUp
 @export var SPEED : float = 300.0
 @export var JUMP_VELOCITY : float = -400.0
 @export var regen_rate : float = 1.0
+@export var gravity :Vector2 = Vector2(0.0,980.0)
 
 @export var hp: float = 100:
 	set(value):

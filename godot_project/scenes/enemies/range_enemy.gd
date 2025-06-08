@@ -37,6 +37,10 @@ func _physics_process(delta: float) -> void:
 		_attack()
 	_handle_animations()
 	move_and_slide()
+	
+	#Kill all enemies
+	if EventBus.killAllEnemies:
+		_rrange_enemy_data.hp = -1
 
 func load_data(range_enemy_resource: RRangeEnemy) -> void:
 	_rrange_enemy_data = range_enemy_resource

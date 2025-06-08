@@ -1,24 +1,33 @@
 extends CharacterBody2D
 class_name Player
 
+signal gameOver
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
 @onready var player_sprite: AnimatedSprite2D = %playerSprite
 @onready var punch_radius: Area2D = %punchRadius
 @onready var player_collision: CollisionShape2D = %playerCollision
 @onready var punch_timer: Timer = %punchTimer
-var playerDamage : float
-var punching : bool = false
+@onready var regen_timer: Timer = %regenTimer
+@onready var damage_not_taken: Timer = %damageNotTaken
+const UPGRADES = preload("uid://bvivda3vnsbw5")
 
-@export var _player_data: RplayerData
+@export var _player_data : RplayerData = preload("uid://byrd0re6gadg6")
 
 var flipChar : bool = true
-
+var playerDamage : float
+var punching : bool = false
 # used to store face on movement for animation
 var face :float = 1.0
-var puncfreq : bool = true
+var shootFreq : bool = true
 var anim_locked: bool = false
+var SPEED : float
+var JUMP_VELOCITY : float
+var regen_rate : float 
+var now_regen : bool = true
+var damage_taken : bool = false
+
+
+var puncfreq : bool = true
 
 
 func _ready() -> void:
@@ -27,16 +36,24 @@ func _ready() -> void:
 	_connect_signals()
 	add_to_group("Player")
 	_init_data()
+	regen_timer.start()
 
 func _connect_signals()->void:
 	punch_timer.connect("timeout",_punchCooldown)
+	regen_timer.connect("timeout",_regen)
+	damage_not_taken.connect("timeout",_regenStart)
 	punch_radius.connect("body_entered", _on_body_entered)
+	_player_data.connect("dead", _on_dead)
+	_player_data.connect("levelUp", _on_levelUp)
 	for enemies in get_tree().get_nodes_in_group("enemies"):
 		pass
 
 func _init_data() -> void:
 	punch_timer.wait_time = _player_data.attack_cooldown
 	playerDamage = _player_data.damage
+	SPEED = _player_data.SPEED
+	JUMP_VELOCITY = _player_data.JUMP_VELOCITY
+	regen_rate = _player_data.regen_rate
 
 func _on_body_entered(_body: Variant) -> void:
 	if(_body is MeleeEnemy):
@@ -44,11 +61,9 @@ func _on_body_entered(_body: Variant) -> void:
 		print((_body as MeleeEnemy)._rmelee_enemy_data.hp)
 	
 func _physics_process(delta: float) -> void:
-
-	
 	# Add the gravity.
 	if not is_on_floor():
-		velocity += get_gravity() * delta
+		velocity += _player_data.gravity * delta
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
@@ -91,20 +106,25 @@ func _physics_process(delta: float) -> void:
 			else:
 				play_animation("jump")
 	
-	if Input.is_action_just_pressed("punch") and is_on_floor() and not anim_locked:
+	if Input.is_action_just_pressed("punch") and is_on_floor() and not anim_locked and puncfreq:
 		anim_locked = true
 		punching = true
 		play_animation("punch1")
 		await player_sprite.animation_finished
-		punching = false
 		anim_locked = false
-	elif Input.is_action_just_pressed("punch") and not is_on_floor() and not anim_locked:
+		puncfreq = false
+		punching = false
+		punch_timer.start()
+		
+	elif Input.is_action_just_pressed("punch") and not is_on_floor() and not anim_locked and puncfreq:
 		anim_locked = true
 		punching = true
 		play_animation("punch2")
 		await player_sprite.animation_finished
-		punching = false
 		anim_locked = false
+		puncfreq = false
+		punching = false
+		punch_timer.start()
 	
 	if punching:
 		punch_radius.monitoring = 1
@@ -117,6 +137,8 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	move_and_slide()
 	
+## _physics_process END
+	
 #_punchCooldown Connected on connectsignals
 func _punchCooldown() -> void:
 	puncfreq = true
@@ -127,9 +149,33 @@ func play_animation(anim_name: String) -> void:
 
 func damage_player(damage: float) -> void:
 	_player_data.hp -= damage/_player_data.playerLevel
+	damage_taken = true
 	if _player_data.hp > 0:
 		_player_data.mp += _player_data.playerMprate/(_player_data.playerLevel * _player_data.hp)
+		anim_locked = true
+		play_animation("damage")
+		await player_sprite.animation_finished
+		anim_locked = false
+		damage_not_taken.start()
+
+func _on_dead()->void:
 	anim_locked = true
-	play_animation("damage")
+	play_animation("death")
 	await player_sprite.animation_finished
 	anim_locked = false
+	queue_free()
+	gameOver.emit()
+
+func _on_levelUp() -> void:
+	var upgradeui := UPGRADES.instantiate()
+	add_child(upgradeui)
+	get_tree().paused = true
+	_player_data.playerLevel += 1
+	_player_data.mp = 0
+
+func _regen() -> void:
+	if not damage_taken:
+		_player_data.hp += regen_rate
+
+func _regenStart() -> void:
+	damage_taken = false

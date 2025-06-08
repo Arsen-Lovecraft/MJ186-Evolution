@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="UpgradeList" load_steps=4 format=3 uid="uid://b07tteevgv41w"]
+
+[ext_resource type="Resource" uid="uid://udmqedg7r0nf" path="res://custom_resources/enemies/enemy_melee_first_level.tres" id="1_0wbfu"]
+[ext_resource type="Script" uid="uid://b1wbg8gk8regn" path="res://scripts/RUpgrades.gd" id="1_24l0n"]
+[ext_resource type="Resource" uid="uid://byrd0re6gadg6" path="res://custom_resources/player/player_data.tres" id="2_3m36n"]
+
+[resource]
+script = ExtResource("1_24l0n")
+jump_increase = 10.0
+damage_increase = 10.0
+speed_increase = 50.0
+mp_rate_increase = 100.0
+regen_increase = 1.0
+_player = ExtResource("2_3m36n")
+_enemy = ExtResource("1_0wbfu")
+metadata/_custom_type_script = "uid://b1wbg8gk8regn"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://e8ksgovpyf22"]
+[gd_scene load_steps=9 format=4 uid="uid://e8ksgovpyf22"]
 
 [ext_resource type="Texture2D" uid="uid://cbeg765aow7bj" path="res://assets/terrain/Platform.png" id="1_iahfn"]
 [ext_resource type="Script" uid="uid://bcvrxcs13fwqj" path="res://scenes/scenes/level.gd" id="1_vma0c"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://bn6m0dr7ypemt" path="res://scenes/enemies/enemies.tscn" id="4_vma0c"]
 [ext_resource type="PackedScene" uid="uid://5506bj7yj8e8" path="res://scenes/scenes/platforms.tscn" id="5_o47o2"]
 [ext_resource type="PackedScene" uid="uid://ldg2jq7gg87x" path="res://scenes/settings/settings_ui.tscn" id="6_734t5"]
-[ext_resource type="PackedScene" uid="uid://c4v623mu1hl6r" path="res://scenes/utility/player_ui.tscn" id="7_m7xn3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6d3ht"]
 texture = ExtResource("1_iahfn")
@@ -45,6 +44,3 @@ collision_layer = 2048
 collision_mask = 3
 
 [node name="UI" parent="." instance=ExtResource("6_734t5")]
-visible = false
-
-[node name="PlayerUI" parent="." instance=ExtResource("7_m7xn3")]
