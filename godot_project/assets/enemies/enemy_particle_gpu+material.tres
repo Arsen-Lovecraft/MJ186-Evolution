@@ -1,0 +1,25 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=3 format=3 uid="uid://cblk8r3ktrgc5"]
+
+[sub_resource type="Curve" id="Curve_ru65g"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.692857, 0.868132), 0.0, 0.0, 0, 0, Vector2(0.92619, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ghbxi"]
+curve = SubResource("Curve_ru65g")
+
+[resource]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 5.45
+angle_min = -37.5
+angle_max = 141.2
+spread = 140.478
+flatness = 0.809
+initial_velocity_max = 50.0
+radial_accel_min = -13.73
+radial_accel_max = 15.69
+scale_min = 0.1
+scale_max = 0.5
+alpha_curve = SubResource("CurveTexture_ghbxi")
+hue_variation_min = 0.12
+hue_variation_max = 0.13

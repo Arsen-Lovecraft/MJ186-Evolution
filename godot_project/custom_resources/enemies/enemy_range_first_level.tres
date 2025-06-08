@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RRangeEnemy" load_steps=2 format=3 uid="uid://d2rur8re0oq04"]
+
+[ext_resource type="Script" uid="uid://cwt2ixotxfw6p" path="res://custom_resources/enemies/rrange_enemy.gd" id="1_7soq1"]
+
+[resource]
+script = ExtResource("1_7soq1")
+hp = 100.0
+speed = 100.0
+damage = 20.0
+attack_cooldown = 0.75
+accuracy_error_angle = 25.0
+projectile_speed = 225.0
+metadata/_custom_type_script = "uid://cwt2ixotxfw6p"

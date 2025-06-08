@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmhc4jqgn3c48"]
+
+[ext_resource type="Script" uid="uid://sd4i0jm4dkmi" path="res://scenes/enemies/range_enemy_projectile.gd" id="1_dmcpp"]
+
+[sub_resource type="Gradient" id="Gradient_dmcpp"]
+offsets = PackedFloat32Array(0, 0.31982, 0.364865, 0.40991, 0.77027, 0.81982, 1)
+colors = PackedColorArray(0.35, 0, 0.00583324, 0.996078, 0.899564, 0.0618736, 0.065697, 0.99695, 0.898039, 0.278431, 0.243137, 1, 0.89946, 0.288486, 0.253683, 0.986066, 1, 0, 0.0166664, 1, 1, 0.73913, 0.743478, 0.26087, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_u6htg"]
+gradient = SubResource("Gradient_dmcpp")
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8, 0.2)
+metadata/_snap_enabled = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jpa5a"]
+
+[node name="RangeEnemyProjectile" type="RigidBody2D"]
+collision_layer = 8
+collision_mask = 2049
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_dmcpp")
+
+[node name="ProjectileSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.659485, 0.67288)
+texture = SubResource("GradientTexture2D_u6htg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_jpa5a")
