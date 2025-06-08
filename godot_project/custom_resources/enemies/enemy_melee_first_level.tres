@@ -6,6 +6,6 @@
 script = ExtResource("1_2biyi")
 hp = 100.0
 speed = 100.0
-damage = 25.0
+damage = 24.0
 attack_cooldown = 3.0
 metadata/_custom_type_script = "uid://c773732inrfhn"

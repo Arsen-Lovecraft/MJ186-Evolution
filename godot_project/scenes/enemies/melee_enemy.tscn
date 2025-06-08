@@ -1,8 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://darlr5ccm4gj3"]
+[gd_scene load_steps=19 format=3 uid="uid://darlr5ccm4gj3"]
 
 [ext_resource type="Script" uid="uid://bj3vc55uffqhy" path="res://scenes/enemies/melee_enemy.gd" id="1_l188l"]
+[ext_resource type="Resource" uid="uid://udmqedg7r0nf" path="res://custom_resources/enemies/enemy_melee_first_level.tres" id="2_ghbxi"]
 [ext_resource type="Texture2D" uid="uid://cat5troaosdg0" path="res://assets/enemies/melee_enemy.png" id="2_ru65g"]
-[ext_resource type="Material" uid="uid://cblk8r3ktrgc5" path="res://assets/enemies/enemy_particle_gpu+material.tres" id="4_p6yma"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p6yma"]
 size = Vector2(16, 16.25)
@@ -148,7 +148,31 @@ colors = PackedColorArray(0.975521, 0.174898, 0.218605, 0.966028, 0.858824, 0.36
 gradient = SubResource("Gradient_ru65g")
 fill = 2
 fill_from = Vector2(0.48433, 0.475783)
-fill_to = Vector2(0.678063, 0.310541)
+fill_to = Vector2(0.655271, 0.344729)
+
+[sub_resource type="Curve" id="Curve_ru65g"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.692857, 0.868132), 0.0, 0.0, 0, 0, Vector2(0.92619, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ghbxi"]
+curve = SubResource("Curve_ru65g")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_c1gin"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 5.45
+angle_min = -37.5
+angle_max = 141.2
+spread = 140.478
+flatness = 0.809
+initial_velocity_max = 50.0
+radial_accel_min = -13.73
+radial_accel_max = 15.69
+scale_min = 0.1
+scale_max = 0.5
+alpha_curve = SubResource("CurveTexture_ghbxi")
+hue_variation_min = 0.12
+hue_variation_max = 0.13
 
 [node name="MeleeEnemy" type="CharacterBody2D"]
 scale = Vector2(4, 4)
@@ -156,6 +180,7 @@ collision_layer = 2
 collision_mask = 2048
 floor_constant_speed = true
 script = ExtResource("1_l188l")
+_rmelee_enemy_data = ExtResource("2_ghbxi")
 
 [node name="animations" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -223,11 +248,9 @@ one_shot = true
 
 [node name="AttackSFX" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
-bus = &"SFX"
 
 [node name="DeathSFX" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
-bus = &"SFX"
 
 [node name="crack" type="GPUParticles2D" parent="."]
 unique_name_in_owner = true
@@ -238,4 +261,12 @@ lifetime = 0.4
 one_shot = true
 explosiveness = 1.0
 randomness = 1.0
-process_material = ExtResource("4_p6yma")
+process_material = SubResource("ParticleProcessMaterial_c1gin")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -6.75
+offset_top = -17.0
+offset_right = -2.75
+offset_bottom = 10.0
+rotation = -1.57079
+scale = Vector2(0.5, 0.5)
