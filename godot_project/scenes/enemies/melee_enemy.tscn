@@ -175,7 +175,6 @@ hue_variation_min = 0.12
 hue_variation_max = 0.13
 
 [node name="MeleeEnemy" type="CharacterBody2D"]
-scale = Vector2(4, 4)
 collision_layer = 2
 collision_mask = 2048
 floor_constant_speed = true
@@ -262,11 +261,3 @@ one_shot = true
 explosiveness = 1.0
 randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_c1gin")
-
-[node name="ProgressBar" type="ProgressBar" parent="."]
-offset_left = -6.75
-offset_top = -17.0
-offset_right = -2.75
-offset_bottom = 10.0
-rotation = -1.57079
-scale = Vector2(0.5, 0.5)

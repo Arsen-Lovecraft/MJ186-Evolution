@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="WaveDescription" load_steps=2 format=3 uid="uid://dqy8vqvbpxk8c"]
+
+[ext_resource type="Script" uid="uid://ditqv2se21f22" path="res://custom_resources/game/wave_spawn_description.gd" id="1_iu2hq"]
+
+[resource]
+script = ExtResource("1_iu2hq")
+melee_spawn_lvl_to_quantity = Dictionary[int, int]({
+1: 0,
+2: 0,
+3: 0,
+4: 0,
+5: 0,
+6: 4,
+7: 1,
+8: 1,
+9: 2,
+10: 0,
+11: 0,
+12: 0
+})
+range_spawn_lvl_to_quantity = Dictionary[int, int]({
+1: 0,
+2: 0,
+3: 0,
+4: 3,
+5: 0,
+6: 0,
+7: 2,
+8: 2,
+9: 2,
+10: 0,
+11: 0,
+12: 0
+})
+metadata/_custom_type_script = "uid://ditqv2se21f22"

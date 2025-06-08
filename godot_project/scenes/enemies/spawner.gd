@@ -8,18 +8,16 @@ const ENEMY_RANGE_DATAL: RRangeEnemy = preload("uid://d2rur8re0oq04")
 
 @onready var _spawner_animation_player: AnimationPlayer = %SpawnerAnimationPlayer
 
-func _process(delta: float) -> void:
-	if (Input.is_action_just_pressed("punch")):
-		var lvl: int = randi_range(1,12)
-		var type: int = randi_range(1,2)
-		if(type == 1):
-			spawn_melee(lvl)
-		else:
-			spawn_range(lvl)
+var melee_queue: Array[int]
+var range_queue: Array[int]
+
+func _ready() -> void:
+	_spawner_animation_player.animation_finished.connect(_on_animation_finished)
 
 func spawn_melee(lvl: int = 1) -> void:
+#	print("Melee spawned, Lvl: " + str(lvl))
 	if(_spawner_animation_player.is_playing()):
-		await _spawner_animation_player.animation_finished
+		melee_queue.push_back(lvl)
 	var melee_inst: MeleeEnemy = MELEE_ENEMY_PS.instantiate()
 	var data: RMeleeEnemy = ENEMY_MELEE_DATA.duplicate(true)
 	data.set_level(lvl)
@@ -31,8 +29,9 @@ func spawn_melee(lvl: int = 1) -> void:
 	_spawner_animation_player.play("close")
 
 func spawn_range(lvl: int = 1) -> void:
+	#print("Range spawned, Lvl: " + str(lvl))
 	if(_spawner_animation_player.is_playing()):
-		await _spawner_animation_player.animation_finished
+		range_queue.push_back(lvl)
 	await _spawner_animation_player.animation_finished
 	var range_inst: RangeEnemy = RANGE_ENEMY_PS.instantiate()
 	var data: RRangeEnemy = ENEMY_RANGE_DATAL.duplicate(true)
@@ -43,3 +42,12 @@ func spawn_range(lvl: int = 1) -> void:
 	await _spawner_animation_player.animation_finished
 	get_tree().current_scene.add_child(range_inst)
 	_spawner_animation_player.play("close")
+
+func _on_animation_finished(anim_name: String) -> void:
+	if(anim_name == "close"):
+		if(melee_queue.size() != 0):
+			spawn_melee(melee_queue.pop_front())
+			return
+		if(melee_queue.size() != 0):
+			spawn_range(range_queue.pop_front())
+			return

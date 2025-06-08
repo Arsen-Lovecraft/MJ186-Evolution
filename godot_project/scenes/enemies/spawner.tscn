@@ -60,7 +60,6 @@ texture_filter = 1
 script = ExtResource("1_lie5b")
 
 [node name="door" type="Sprite2D" parent="."]
-scale = Vector2(4, 4)
 texture = ExtResource("2_mv1hi")
 offset = Vector2(0, -8)
 hframes = 8

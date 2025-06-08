@@ -53,6 +53,7 @@ func _connect_signals() -> void:
 	_damage_zones.body_exited.connect(_on_player_out_damage_area)
 	_me_animation_player.animation_finished.connect(_on_animation_finished)
 	_rmelee_enemy_data.dead.connect(_on_dead)
+	EventBus.enemy_created.emit()
 
 func _handle_animations() -> void:
 	if(velocity.x > 0):
@@ -121,6 +122,7 @@ func _on_dead() -> void:
 	self.collision_mask = 0
 	_death_sfx.play()
 	_me_animation_player.play("death")
+	EventBus.enemy_died.emit()
 
 func _on_animation_finished(animation_name: String) -> void:
 	if(animation_name == "death"):
