@@ -1,13 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://c4v623mu1hl6r"]
+[gd_scene load_steps=7 format=3 uid="uid://c4v623mu1hl6r"]
 
 [ext_resource type="Texture2D" uid="uid://du1wyx148kqo8" path="res://assets/UI/bg.png" id="1_bb11m"]
 [ext_resource type="Script" uid="uid://biwpwj7a3cgvk" path="res://scenes/utility/player_ui.gd" id="1_rbce2"]
 [ext_resource type="Theme" uid="uid://p6vvjajrchtu" path="res://scenes/utility/player_ui.tres" id="2_7csbp"]
 [ext_resource type="Texture2D" uid="uid://ngmuk7nw5ncl" path="res://assets/UI/over.png" id="2_k8dae"]
+[ext_resource type="Resource" uid="uid://byrd0re6gadg6" path="res://custom_resources/player/player_data.tres" id="2_shr2j"]
 [ext_resource type="Texture2D" uid="uid://b4huklhgv6d7v" path="res://assets/UI/progress.png" id="3_rbce2"]
 
 [node name="PlayerUI" type="CanvasLayer"]
 script = ExtResource("1_rbce2")
+_player_data = ExtResource("2_shr2j")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

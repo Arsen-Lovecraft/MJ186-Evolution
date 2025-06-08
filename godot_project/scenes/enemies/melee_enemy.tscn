@@ -1,6 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://darlr5ccm4gj3"]
+[gd_scene load_steps=19 format=3 uid="uid://darlr5ccm4gj3"]
 
 [ext_resource type="Script" uid="uid://bj3vc55uffqhy" path="res://scenes/enemies/melee_enemy.gd" id="1_l188l"]
+[ext_resource type="Resource" uid="uid://udmqedg7r0nf" path="res://custom_resources/enemies/enemy_melee_first_level.tres" id="2_ghbxi"]
 [ext_resource type="Texture2D" uid="uid://cat5troaosdg0" path="res://assets/enemies/melee_enemy.png" id="2_ru65g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p6yma"]
@@ -179,6 +180,7 @@ collision_layer = 2
 collision_mask = 2048
 floor_constant_speed = true
 script = ExtResource("1_l188l")
+_rmelee_enemy_data = ExtResource("2_ghbxi")
 
 [node name="animations" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -200,7 +202,6 @@ autoplay = "move_right"
 
 [node name="Sensor" type="Area2D" parent="."]
 unique_name_in_owner = true
-visible = false
 position = Vector2(-0.0799999, -9.336)
 collision_layer = 0
 
@@ -210,7 +211,6 @@ shape = SubResource("RectangleShape2D_l188l")
 
 [node name="DamageZones" type="Area2D" parent="."]
 unique_name_in_owner = true
-visible = false
 position = Vector2(-0.0799999, -9.336)
 collision_layer = 8
 

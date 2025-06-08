@@ -89,8 +89,8 @@ func _try_to_damage() -> void:
 	while (true):
 		for body: Node2D in _damage_zones.get_overlapping_bodies():
 			if(body is Player and _me_animation_player.current_animation_position >= 0.4):
-				(body as Player).take_damage(_rmelee_enemy_data.damage)
-				print(_me_animation_player.current_animation_position)
+				(body as Player).damage_player(_rmelee_enemy_data.damage)
+				#print(_me_animation_player.current_animation_position)
 				return
 		if(_me_animation_player.current_animation_position > 0.75):
 			return
@@ -128,6 +128,6 @@ func _on_animation_finished(animation_name: String) -> void:
 	elif(animation_name == "attack"):
 		_me_animation_player.play("RESET")
 
-func take_damage(damage: float) -> void:
+func damage_enemy(damage: float) -> void:
 	_crack.emitting = true
 	_rmelee_enemy_data.hp -= damage

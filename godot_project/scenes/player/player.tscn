@@ -1,10 +1,50 @@
-[gd_scene load_steps=31 format=3 uid="uid://bsmgb5t1ra8dn"]
+[gd_scene load_steps=44 format=3 uid="uid://bsmgb5t1ra8dn"]
 
 [ext_resource type="Script" uid="uid://b2fss36ik6mev" path="res://scripts/player.gd" id="1_dovo2"]
+[ext_resource type="Resource" uid="uid://byrd0re6gadg6" path="res://custom_resources/player/player_data.tres" id="2_5gtgg"]
 [ext_resource type="Texture2D" uid="uid://bvkib2agxsyom" path="res://assets/player/idle.png" id="2_lvxji"]
+[ext_resource type="Texture2D" uid="uid://3h6jxkf6wps1" path="res://assets/player/damaged.png" id="2_qek5x"]
+[ext_resource type="Texture2D" uid="uid://bsgal5retgmva" path="res://assets/player/teleport.png" id="3_5gtgg"]
 [ext_resource type="Texture2D" uid="uid://dj4j7pgfq36cu" path="res://assets/player/jump.png" id="3_p47bc"]
 [ext_resource type="Texture2D" uid="uid://di32pjdj1ew03" path="res://assets/player/run.png" id="4_75vfm"]
 [ext_resource type="Texture2D" uid="uid://s6b4t8gag8w5" path="res://assets/player/attacks.png" id="4_p47bc"]
+[ext_resource type="PackedScene" uid="uid://c4v623mu1hl6r" path="res://scenes/utility/player_ui.tscn" id="6_75vfm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6cv16"]
+atlas = ExtResource("2_qek5x")
+region = Rect2(30, 0, 30, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j4nxn"]
+atlas = ExtResource("2_qek5x")
+region = Rect2(30, 23, 30, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_28m0y"]
+atlas = ExtResource("2_qek5x")
+region = Rect2(30, 23, 30, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uniwh"]
+atlas = ExtResource("2_qek5x")
+region = Rect2(30, 0, 30, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqsei"]
+atlas = ExtResource("3_5gtgg")
+region = Rect2(30, 0, 30, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tffgl"]
+atlas = ExtResource("3_5gtgg")
+region = Rect2(30, 23, 30, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pk8ii"]
+atlas = ExtResource("3_5gtgg")
+region = Rect2(30, 46, 30, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5mf0n"]
+atlas = ExtResource("3_5gtgg")
+region = Rect2(30, 69, 30, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4hvnv"]
+atlas = ExtResource("3_5gtgg")
+region = Rect2(30, 92, 30, 23)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lvxji"]
 atlas = ExtResource("2_lvxji")
@@ -96,6 +136,55 @@ region = Rect2(30, 69, 30, 23)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_myrg7"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6cv16")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j4nxn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6cv16")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j4nxn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6cv16")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j4nxn")
+}],
+"loop": false,
+"name": &"damage",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_28m0y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uniwh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iqsei")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tffgl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pk8ii")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5mf0n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4hvnv")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lvxji")
@@ -199,12 +288,13 @@ height = 24.0
 disable_mode = 1
 collision_mask = 2051
 script = ExtResource("1_dovo2")
+_player_data = ExtResource("2_5gtgg")
 
 [node name="playerSprite" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_myrg7")
-animation = &"punch2"
+animation = &"damage"
 
 [node name="playerCollision" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
@@ -212,6 +302,7 @@ position = Vector2(-3, 1)
 shape = SubResource("RectangleShape2D_p47bc")
 
 [node name="punchTimer" type="Timer" parent="."]
+unique_name_in_owner = true
 wait_time = 0.5
 
 [node name="punchRadius" type="Area2D" parent="."]
@@ -221,3 +312,5 @@ collision_mask = 2
 [node name="punchCollision" type="CollisionShape2D" parent="punchRadius"]
 position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_75vfm")
+
+[node name="PlayerUI" parent="." instance=ExtResource("6_75vfm")]
