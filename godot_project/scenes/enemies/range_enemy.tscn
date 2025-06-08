@@ -8,7 +8,7 @@
 size = Vector2(13, 15)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_342vm"]
-size = Vector2(85, 96.5)
+size = Vector2(150, 156)
 
 [sub_resource type="Animation" id="Animation_sqrdn"]
 resource_name = "RESET"
@@ -178,7 +178,7 @@ position = Vector2(-1, -24)
 collision_layer = 0
 
 [node name="SACollisionShape2D" type="CollisionShape2D" parent="SensorArea2D"]
-position = Vector2(2.5, -28.75)
+position = Vector2(3, 1)
 shape = SubResource("RectangleShape2D_342vm")
 
 [node name="REAnimationPlayer" type="AnimationPlayer" parent="."]

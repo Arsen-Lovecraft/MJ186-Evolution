@@ -13,7 +13,6 @@ var range_queue: Array[int]
 
 func _ready() -> void:
 	_spawner_animation_player.animation_finished.connect(_on_animation_finished)
-	print(_spawner_animation_player.name)
 
 func spawn_melee(lvl: int = 1) -> void:
 	if(_spawner_animation_player.is_playing()):
