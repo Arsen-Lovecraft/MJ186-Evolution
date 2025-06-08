@@ -1,17 +1,24 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://dn6svqxiwg6vh"]
+[gd_resource type="TileSet" load_steps=4 format=3 uid="uid://dn6svqxiwg6vh"]
 
 [ext_resource type="Texture2D" uid="uid://wtlvym2qrvpw" path="res://assets/terrain/tile_set.png" id="1_eygyi"]
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_eygyi"]
+tile_data = PackedInt32Array(0, 2, 0, 1, 65538, 0, 2, 65538, 0, 3, 65538, 0, 4, 65538, 0, 5, 131074, 0)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2uvup"]
 texture = ExtResource("1_eygyi")
 0:0/0 = 0
+0:0/0/modulate = Color(0.2755, 0.725167, 0.95, 1)
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -0.0899296, 8, -0.0899296, 8, 8, -8, 8)
 1:0/0 = 0
+1:0/0/modulate = Color(0.2755, 0.725167, 0.95, 1)
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -0.0899296, 8, -0.0899296, 8, 8, -8, 8)
 2:0/0 = 0
+2:0/0/modulate = Color(0.2755, 0.725167, 0.95, 1)
 2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -0.0899296, 8, -0.0899296, 8, 8, -8, 8)
 3:0/0 = 0
 4:0/0 = 0
+4:0/0/modulate = Color(0.69, 0.69, 0.69, 1)
 0:1/0 = 0
 0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 5.95803, 8, 5.95803, 8, 8, -8, 8)
 1:1/0 = 0
@@ -20,6 +27,7 @@ texture = ExtResource("1_eygyi")
 2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, 8, 8, -8, 8, -8, 5.95728, 5.99924, 6.04119, 5.91533, -8)
 3:1/0 = 0
 4:1/0 = 0
+4:1/0/modulate = Color(0.69, 0.69, 0.69, 1)
 0:2/0 = 0
 0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -5.95728, -8, -6.04119)
 1:2/0 = 0
@@ -44,3 +52,4 @@ texture = ExtResource("1_eygyi")
 physics_layer_0/collision_layer = 2048
 physics_layer_0/collision_mask = 3
 sources/2 = SubResource("TileSetAtlasSource_2uvup")
+pattern_0 = SubResource("TileMapPattern_eygyi")

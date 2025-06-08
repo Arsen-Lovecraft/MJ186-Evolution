@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="RMeleeEnemy" load_steps=6 format=3 uid="uid://udmqedg7r0nf"]
+
+[ext_resource type="Curve" uid="uid://dxjptnktlv1la" path="res://custom_resources/enemies/curves/melee/attack_cooldown_to_level_curve.tres" id="1_m7xnv"]
+[ext_resource type="Script" uid="uid://c773732inrfhn" path="res://custom_resources/enemies/rmelee_enemy.gd" id="1_w5e37"]
+[ext_resource type="Curve" uid="uid://c1hyyevkw04lq" path="res://custom_resources/enemies/curves/melee/damage_to_level_curve.tres" id="2_j7to2"]
+[ext_resource type="Curve" uid="uid://xl68qjmfr7f0" path="res://custom_resources/enemies/curves/melee/hp_to_level_curve.tres" id="3_qxask"]
+[ext_resource type="Curve" uid="uid://cmmnyjquy8xwv" path="res://custom_resources/enemies/curves/melee/speed_to_level_curve.tres" id="5_6w18y"]
+
+[resource]
+script = ExtResource("1_w5e37")
+hp_to_level = ExtResource("3_qxask")
+speed_to_level = ExtResource("5_6w18y")
+damage_to_level = ExtResource("2_j7to2")
+attack_cooldown_to_level = ExtResource("1_m7xnv")
+metadata/_custom_type_script = "uid://c773732inrfhn"

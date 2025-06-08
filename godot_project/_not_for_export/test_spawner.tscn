@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=4 uid="uid://cqoilh05jbo5f"]
+[gd_scene load_steps=4 format=4 uid="uid://lekacefb3x4m"]
 
-[ext_resource type="TileSet" uid="uid://dn6svqxiwg6vh" path="res://assets/terrain/environment.tres" id="1_xh6i7"]
-[ext_resource type="PackedScene" uid="uid://dbs7qyg8efv27" path="res://scenes/enemies/range_enemy.tscn" id="3_4ald1"]
-[ext_resource type="Resource" uid="uid://d2rur8re0oq04" path="res://custom_resources/enemies/enemy_range_data.tres" id="4_f0h7d"]
-[ext_resource type="PackedScene" uid="uid://bsmgb5t1ra8dn" path="res://scenes/player/player.tscn" id="5_76kne"]
+[ext_resource type="TileSet" uid="uid://dn6svqxiwg6vh" path="res://assets/terrain/environment.tres" id="1_ofj23"]
+[ext_resource type="PackedScene" uid="uid://bsmgb5t1ra8dn" path="res://scenes/player/player.tscn" id="2_rgr18"]
+[ext_resource type="PackedScene" uid="uid://1thg6tkdo4xg" path="res://scenes/enemies/spawner.tscn" id="3_52ymq"]
 
 [node name="ExampleArena" type="Node2D"]
 
@@ -12,26 +11,31 @@ texture_filter = 1
 position = Vector2(680, 386)
 scale = Vector2(6, 6)
 tile_map_data = PackedByteArray("AAD+/wAAAgAEAAAAAAD//wAAAgAEAAEAAAAAAAAAAgAEAAEAAAABAAAAAgAEAAEAAAD9/wAAAgAEAAAAAAACAAAAAgAEAAEAAAD9////AgADAAAAAAD+////AgADAAAAAAD/////AgADAAAAAAAAAP//AgADAAAAAAABAP//AgADAAAAAAACAP//AgADAAAAAAAFAAIAAgAEAAEAAAAFAAEAAgAEAAAAAAAEAAEAAgAEAAAAAAAEAAAAAgADAAMAAAAEAAIAAgAEAAAAAAAFAAAAAgADAAAAAAAEAP//AgADAAEAAAAFAP//AgAEAAEAAAAFAP7/AgAEAAEAAAAFAP3/AgAEAAEAAAAEAP3/AgAEAAAAAAAEAPz/AgAAAAQAAAD5//7/AgAEAAAAAAD5/wAAAgAEAAEAAAD5/wEAAgAEAAAAAAD5/wIAAgAEAAEAAAD6//z/AgAAAAQAAAD6//3/AgAEAAEAAAD6/wAAAgAEAAEAAAD6/wEAAgAEAAEAAAD7//z/AgAEAAEAAAD7////AgADAAAAAAD7/wAAAgAEAAEAAAD8//3/AgAEAAEAAAD8//7/AgAEAAEAAAD8/wAAAgAEAAAAAAD8/wEAAgAEAAEAAAD9//3/AgAEAAEAAAD9/wEAAgAEAAEAAAD9/wIAAgAEAAEAAAD+//3/AgAEAAEAAAD+//7/AgAEAAAAAAD+/wEAAgAEAAAAAAD+/wIAAgAEAAEAAAD///z/AgAEAAEAAAD///3/AgAEAAEAAAD///7/AgAEAAEAAAD//wEAAgAEAAEAAAAAAAIAAgAEAAEAAAABAP7/AgADAAMAAAACAPz/AgAEAAAAAAACAP3/AgAEAAAAAAACAP7/AgADAAAAAAADAP3/AgAEAAEAAAADAP7/AgADAAAAAAADAAAAAgADAAEAAAADAAEAAgADAAEAAAADAAIAAgADAAEAAAAEAP7/AgAEAAIAAAAFAPz/AgAAAAQAAAAAAAEAAgAEAAAAAAABAAIAAgAEAAEAAAACAAEAAgAEAAAAAAACAAIAAgAEAAEAAAADAP//AgAEAAIAAAAAAP3/AgAEAAEAAAAAAP7/AgAEAAEAAAABAPz/AgADAAEAAAABAP3/AgADAAEAAAAAAPz/AgAEAAEAAAD7/wEAAgAEAAAAAAD6/wIAAgAEAAAAAAD8/wIAAgAEAAAAAAD8////AgADAAAAAAD7//7/AgAEAAEAAAD6//7/AgAEAAEAAAD6////AgADAAAAAAD5////AgADAAAAAAD7//3/AgAEAAAAAAD9//z/AgAEAAAAAAD8//z/AgAEAAEAAAADAPz/AgAEAAAAAAD+//z/AgAEAAAAAAD5//z/AgAAAAQAAAD5//3/AgAEAAAAAAD9//7/AgAEAAEAAAD7/wIAAgAEAAEAAAD//wIAAgAEAAEAAAABAAEAAgAEAAAAAAA=")
-tile_set = ExtResource("1_xh6i7")
+tile_set = ExtResource("1_ofj23")
 
 [node name="Platforms" type="TileMapLayer" parent="."]
 texture_filter = 1
 position = Vector2(670, 492)
 scale = Vector2(3.16207, 3.41771)
 tile_map_data = PackedByteArray("AAD+/wEAAgABAAAAAAD//wEAAgABAAAAAAAAAAEAAgABAAAAAAABAAEAAgABAAAAAAACAAEAAgACAAAAAAD9/wEAAgAAAAAAAAD8/wIAAgABAAAAAAD7/wIAAgABAAAAAAD5/wIAAgAAAAAAAAD6/wIAAgABAAAAAAAEAAIAAgABAAAAAAADAAIAAgABAAAAAAAFAAIAAgACAAAAAAD9/wIAAgABAAEAAAACAAIAAgACAAEAAAA=")
-tile_set = ExtResource("1_xh6i7")
+tile_set = ExtResource("1_ofj23")
 
 [node name="Borders" type="TileMapLayer" parent="."]
 texture_filter = 1
 position = Vector2(680, 386)
 scale = Vector2(6, 6)
 tile_map_data = PackedByteArray("AAAFAPz/AgACAAIAAAAFAP3/AgABAAMAAAAFAP7/AgABAAMAAAAFAP//AgABAAMAAAAFAAAAAgABAAMAAAAFAAEAAgABAAMAAAAFAAIAAgACAAEAAAAEAAIAAgAAAAEAAAACAAIAAgAAAAEAAAADAAIAAgAAAAEAAAABAAIAAgAAAAEAAAAAAAIAAgAAAAEAAAD//wIAAgAAAAEAAAD+/wIAAgAAAAEAAAD9/wIAAgAAAAEAAAD8/wIAAgAAAAEAAAD7/wIAAgAAAAEAAAD6/wIAAgAAAAEAAAD5/wIAAgABAAEAAAD5/wEAAgACAAQAAAD5/wAAAgACAAQAAAD5////AgACAAQAAAD5//7/AgACAAQAAAD5//3/AgACAAQAAAD5//z/AgABAAIAAAD6//z/AgAAAAMAAAD7//z/AgAAAAIAAAD8//z/AgAAAAMAAAD9//z/AgAAAAMAAAD+//z/AgAAAAMAAAD///z/AgAAAAIAAAAAAPz/AgAAAAIAAAABAPz/AgAAAAIAAAACAPz/AgAAAAIAAAADAPz/AgAAAAMAAAAEAPz/AgAAAAMAAAA=")
-tile_set = ExtResource("1_xh6i7")
+tile_set = ExtResource("1_ofj23")
 
-[node name="Player" parent="." instance=ExtResource("5_76kne")]
+[node name="Player" parent="." instance=ExtResource("2_rgr18")]
 position = Vector2(201, 275)
 scale = Vector2(5.43844, 5.49407)
 
-[node name="RangeEnemy" parent="." instance=ExtResource("3_4ald1")]
-position = Vector2(658, 573)
-_rrange_enemy_data = ExtResource("4_f0h7d")
+[node name="Spawner" parent="." instance=ExtResource("3_52ymq")]
+position = Vector2(593, 572)
+
+[node name="Spawner2" parent="." instance=ExtResource("3_52ymq")]
+position = Vector2(1116, 660)
+
+[node name="Spawner3" parent="." instance=ExtResource("3_52ymq")]
+position = Vector2(867, 628)
