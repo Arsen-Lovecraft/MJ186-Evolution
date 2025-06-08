@@ -127,6 +127,6 @@ func _on_animation_finished(animation_name: String) -> void:
 	elif(animation_name == "attack"):
 		_re_animation_player.play("RESET")
 
-func take_damage(damage: float) -> void:
+func damage_enemy(damage: float) -> void:
 	_crack.emitting = true
 	_rrange_enemy_data.hp -= damage

@@ -13,9 +13,9 @@ var range_queue: Array[int]
 
 func _ready() -> void:
 	_spawner_animation_player.animation_finished.connect(_on_animation_finished)
+	print(_spawner_animation_player.name)
 
 func spawn_melee(lvl: int = 1) -> void:
-#	print("Melee spawned, Lvl: " + str(lvl))
 	if(_spawner_animation_player.is_playing()):
 		melee_queue.push_back(lvl)
 	var melee_inst: MeleeEnemy = MELEE_ENEMY_PS.instantiate()
@@ -29,10 +29,8 @@ func spawn_melee(lvl: int = 1) -> void:
 	_spawner_animation_player.play("close")
 
 func spawn_range(lvl: int = 1) -> void:
-	#print("Range spawned, Lvl: " + str(lvl))
 	if(_spawner_animation_player.is_playing()):
 		range_queue.push_back(lvl)
-	await _spawner_animation_player.animation_finished
 	var range_inst: RangeEnemy = RANGE_ENEMY_PS.instantiate()
 	var data: RRangeEnemy = ENEMY_RANGE_DATAL.duplicate(true)
 	data.set_level(lvl)
@@ -48,6 +46,6 @@ func _on_animation_finished(anim_name: String) -> void:
 		if(melee_queue.size() != 0):
 			spawn_melee(melee_queue.pop_front())
 			return
-		if(melee_queue.size() != 0):
+		if(range_queue.size() != 0):
 			spawn_range(range_queue.pop_front())
 			return
