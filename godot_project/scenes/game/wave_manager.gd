@@ -1,8 +1,9 @@
 class_name WaveManager
 extends Node
 
-@export var _spawners: Array[Spawner]
 @onready var _spawners_container: Node2D = %Spawners
+
+var _spawners: Array[Spawner]
 
 var _waves_spawn_dictionary: Dictionary[int, WaveDescription] = {
 	1: preload("uid://b7mu6o6h6tk4o"),

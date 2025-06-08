@@ -58,7 +58,8 @@ func _init_data() -> void:
 func _on_body_entered(_body: Variant) -> void:
 	if(_body is MeleeEnemy):
 		(_body as MeleeEnemy).damage_enemy(playerDamage)
-		print((_body as MeleeEnemy)._rmelee_enemy_data.hp)
+	if(_body is RangeEnemy):
+		(_body as RangeEnemy).damage_enemy(playerDamage)
 	
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
