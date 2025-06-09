@@ -1,15 +1,28 @@
-[gd_scene load_steps=6 format=3 uid="uid://ldg2jq7gg87x"]
+[gd_scene load_steps=8 format=3 uid="uid://ldg2jq7gg87x"]
 
 [ext_resource type="Script" uid="uid://bhomfk2kyqnn3" path="res://scenes/settings/settings_ui.gd" id="1_av8nu"]
 [ext_resource type="PackedScene" uid="uid://36o0p33tb04a" path="res://scenes/settings/setting_windows/game_settings_ui.tscn" id="2_cwu4w"]
 [ext_resource type="PackedScene" uid="uid://c05ux4ga1jtti" path="res://scenes/settings/setting_windows/graphic_settings_ui.tscn" id="2_x0p48"]
 [ext_resource type="PackedScene" uid="uid://d0dqam4dmmdh4" path="res://scenes/settings/setting_windows/sound_settings_ui.tscn" id="3_cwu4w"]
 [ext_resource type="PackedScene" uid="uid://cohscvcbckpo0" path="res://scenes/settings/setting_windows/controls_settings_ui.tscn" id="3_vktl3"]
+[ext_resource type="AudioStream" uid="uid://d0wiwo1217mcj" path="res://assets/UI/sounds/cooking-food-music-kitchen-chef-menu-vlog-background-intro-theme-261855.mp3" id="6_vktl3"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_cwu4w"]
+specular_color = Color(0.133333, 0.133333, 0.133333, 1)
 
 [node name="CanvasLayer" type="CanvasLayer"]
 process_mode = 3
 layer = 12
 script = ExtResource("1_av8nu")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+self_modulate = Color(0.180392, 0.180392, 0.180392, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_cwu4w")
 
 [node name="SettingsWindows" type="TabContainer" parent="."]
 anchors_preset = 15
@@ -25,6 +38,26 @@ metadata/_edit_use_anchors_ = true
 [node name="GAME" parent="SettingsWindows" instance=ExtResource("2_cwu4w")]
 layout_mode = 2
 metadata/_tab_index = 0
+
+[node name="vBox" type="VBoxContainer" parent="SettingsWindows/GAME"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.325
+anchor_bottom = 0.8
+offset_right = 164.0
+grow_vertical = 2
+theme_override_constants/separation = 100
+
+[node name="startGame" type="Button" parent="SettingsWindows/GAME/vBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Let's Begin This S**t"
+
+[node name="endGame" type="Button" parent="SettingsWindows/GAME/vBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "I am Done Here
+"
 
 [node name="CONTROLS" parent="SettingsWindows" instance=ExtResource("3_vktl3")]
 visible = false
@@ -54,3 +87,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2.17035, 1.91734)
 text = "EXIT"
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("6_vktl3")

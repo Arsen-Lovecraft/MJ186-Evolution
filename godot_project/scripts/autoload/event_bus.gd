@@ -7,5 +7,7 @@ var killAllEnemies: bool = false :
 	set(value):
 		killAllEnemies = value
 
+var startGame : bool = false
+
 signal enemy_created()
 signal enemy_died()

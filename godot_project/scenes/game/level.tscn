@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=4 uid="uid://baee3xi2ohms6"]
+[gd_scene load_steps=8 format=4 uid="uid://baee3xi2ohms6"]
 
 [ext_resource type="Script" uid="uid://dfqus2cfipj1h" path="res://scenes/game/level.gd" id="1_gttig"]
 [ext_resource type="TileSet" uid="uid://dn6svqxiwg6vh" path="res://assets/terrain/environment.tres" id="2_dtmi3"]
 [ext_resource type="Script" uid="uid://n28r8t7qq6ow" path="res://scenes/game/wave_manager.gd" id="2_ji7po"]
 [ext_resource type="PackedScene" uid="uid://1thg6tkdo4xg" path="res://scenes/enemies/spawner.tscn" id="3_ji7po"]
 [ext_resource type="PackedScene" uid="uid://bsmgb5t1ra8dn" path="res://scenes/player/player.tscn" id="3_rhpan"]
+[ext_resource type="AudioStream" uid="uid://0v2vcaoahq5v" path="res://assets/UI/sounds/90s-game-music-no-copyright-352850.mp3" id="6_65r54"]
+[ext_resource type="PackedScene" uid="uid://ldg2jq7gg87x" path="res://scenes/settings/settings_ui.tscn" id="7_mxnjv"]
 
 [node name="Level" type="Node"]
 process_mode = 3
@@ -77,3 +79,11 @@ position = Vector2(-208, 232)
 unique_name_in_owner = true
 process_mode = 1
 position = Vector2(-40, 242)
+
+[node name="BGMusic" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("6_65r54")
+bus = &"Music"
+
+[node name="settings" parent="." instance=ExtResource("7_mxnjv")]
+unique_name_in_owner = true

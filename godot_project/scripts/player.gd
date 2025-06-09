@@ -10,6 +10,10 @@ signal gameOver
 @onready var regen_timer: Timer = %regenTimer
 @onready var damage_not_taken: Timer = %damageNotTaken
 const UPGRADES = preload("uid://bvivda3vnsbw5")
+@onready var punch_sound: AudioStreamPlayer = %punchSound
+@onready var jump_punch_sound: AudioStreamPlayer = %jumpPunchSound
+@onready var jump_sound: AudioStreamPlayer = %jumpSound
+
 
 @export var _player_data : RplayerData = preload("uid://byrd0re6gadg6")
 
@@ -71,6 +75,7 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		jump_sound.play()
 		
 	if Input.is_action_just_pressed("down") and is_on_floor():
 		position.y += 1
@@ -111,6 +116,7 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("punch") and is_on_floor() and not anim_locked and puncfreq:
 		anim_locked = true
+		punch_sound.play()
 		punching = true
 		play_animation("punch1")
 		await player_sprite.animation_finished
@@ -121,6 +127,7 @@ func _physics_process(delta: float) -> void:
 		
 	elif Input.is_action_just_pressed("punch") and not is_on_floor() and not anim_locked and puncfreq:
 		anim_locked = true
+		jump_punch_sound.play()
 		punching = true
 		play_animation("punch2")
 		await player_sprite.animation_finished
@@ -154,6 +161,7 @@ func damage_player(damage: float) -> void:
 	_player_data.hp -= damage/_player_data.playerLevel
 	damage_taken = true
 	if _player_data.hp > 0:
+		%damageSound.play()
 		_player_data.mp += (_player_data.playerMprate * mp_regen_rate)/(_player_data.playerLevel * _player_data.hp)
 		anim_locked = true
 		play_animation("damage")
@@ -164,11 +172,14 @@ func damage_player(damage: float) -> void:
 
 func _on_dead()->void:
 	anim_locked = true
+	%deathSound.play()
+	#%gameOverSound.play()
+
 	play_animation("death")
 	await player_sprite.animation_finished
 	anim_locked = false
 	queue_free()
-	#gameOver.emit()
+	gameOver.emit()
 
 func _on_levelUp() -> void:
 	var upgradeui := UPGRADES.instantiate()
@@ -176,7 +187,8 @@ func _on_levelUp() -> void:
 	get_tree().paused = true
 	_player_data.playerLevel += 1
 	_player_data.mp = 0
-
+	%levelupSound.play()
+	
 func _regen() -> void:
 	if not damage_taken:
 		_player_data.hp += regen_rate
